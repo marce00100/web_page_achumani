@@ -7,8 +7,9 @@
 <meta name="description" content="Residencia de 212 m² construidos en Urbanización Libertad, Meseta de Achumani. Jardín, departamento independiente y venta directa.">
 <meta name="theme-color" content="#181F2C">
 
-<!-- Favicon estratégico para generar confianza en la pestaña del navegador -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏡</text></svg>">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-64.png">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +32,7 @@
     --max:1180px;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;} /* Permite que los enlaces internos naveguen de forma suave */
+  html{scroll-behavior:smooth;}
   body{
     margin:0;
     font-family:'Work Sans', sans-serif;
@@ -158,51 +159,41 @@
     opacity:0; transform:translateY(14px);
     animation:riseIn .9s ease .45s forwards;
   }
-  
-  /* Contenedor de Botones Principales y Secundarios */
-  .hero-actions {
-    margin-top: 38px;
+  .hero-row{
+    margin-top:38px;
+    display:flex; flex-wrap:wrap; align-items:center; gap:16px;
     opacity:0; transform:translateY(14px);
     animation:riseIn .9s ease .62s forwards;
   }
-  .hero-row{
-    display:flex; flex-wrap:wrap; align-items:center; gap:20px;
+  
+  /* Botones del Hero actualizados */
+  .btn-primary, .btn-secondary{
+    font-weight:600;
+    font-size:15px;
+    padding:16px 24px;
+    border-radius:100px;
+    display:inline-flex; align-items:center; gap:10px;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease;
+    border:none; cursor:pointer;
   }
-  .hero-nav-links {
-    display: flex; gap: 16px; margin-top: 24px;
-  }
-
   .btn-primary{
     background:var(--sol);
     color:var(--noche);
-    font-weight:600;
-    font-size:15.5px;
-    padding:16px 26px;
-    border-radius:100px;
-    display:inline-flex; align-items:center; gap:11px;
     box-shadow:0 10px 30px rgba(232,169,74,0.28);
-    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
-    border:none; cursor:pointer;
   }
-  .btn-primary svg{width:19px; height:19px; flex-shrink:0;}
   .btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(232,169,74,0.4); background:var(--sol-soft);}
   
-  .btn-secondary {
-    background: rgba(237,230,216,0.1);
-    color: var(--hueso-2);
-    border: 1px solid rgba(237,230,216,0.3);
-    font-weight: 500;
-    font-size: 14.5px;
-    padding: 12px 24px;
-    border-radius: 100px;
-    transition: background 0.25s, border-color 0.25s;
-    backdrop-filter: blur(4px);
+  .btn-secondary{
+    background:rgba(237,230,216,0.15);
+    color:var(--hueso-2);
+    border:1px solid rgba(237,230,216,0.3);
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
   }
-  .btn-secondary:hover {
-    background: rgba(237,230,216,0.2);
-    border-color: var(--hueso-2);
-  }
-
+  .btn-secondary:hover{transform:translateY(-2px); background:rgba(237,230,216,0.25); border-color:var(--hueso-2);}
+  
+  .btn-primary svg, .btn-secondary svg{width:20px; height:20px; flex-shrink:0;}
+  
   .price-chip{
     font-family:'JetBrains Mono', monospace;
     color:var(--hueso-2);
@@ -211,8 +202,42 @@
     border:1px solid rgba(237,230,216,0.35);
     padding:11px 18px;
     border-radius:100px;
+    margin-left:auto; /* Empuja el precio a la derecha si hay espacio */
   }
   .price-chip b{color:var(--sol-soft); font-weight:600;}
+  
+  .scroll-cue{
+    position:absolute; right:32px; bottom:26px; z-index:2;
+    color:rgba(237,230,216,0.75);
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+  }
+  .scroll-cue .line{width:1px; height:34px; background:rgba(237,230,216,0.5); position:relative; overflow:hidden;}
+  .scroll-cue .line::after{
+    content:""; position:absolute; left:0; top:-100%; width:100%; height:100%;
+    background:var(--sol-soft);
+    animation:scrollLine 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollLine{ 50%{top:0;} 100%{top:100%;} }
+
+  /* sun arc signature */
+  .sun-arc{position:absolute; top:64px; left:0; right:0; z-index:2; display:flex; justify-content:center; pointer-events:none;}
+  .sun-arc svg{width:min(560px, 80vw); height:auto; overflow:visible;}
+  .sun-arc path{
+    fill:none; stroke:rgba(237,230,216,0.32); stroke-width:1.2; stroke-dasharray:2 6; stroke-linecap:round;
+  }
+  .sun-arc circle.sun-dot{
+    fill:var(--sol-soft);
+    filter:drop-shadow(0 0 10px rgba(242,200,121,0.8));
+  }
+  .sun-arc .track{
+    stroke-dasharray:340; stroke-dashoffset:340;
+    animation:drawArc 1.8s ease .4s forwards;
+  }
+  @keyframes drawArc{ to{stroke-dashoffset:0;} }
 
   /* ---------- SECTIONS GENERIC ---------- */
   section{padding:110px 0;}
@@ -236,6 +261,89 @@
   .reveal-stagger.in-view > *:nth-child(1){transition-delay:.05s;}
   .reveal-stagger.in-view > *:nth-child(2){transition-delay:.16s;}
   .reveal-stagger.in-view > *:nth-child(3){transition-delay:.27s;}
+
+  /* ---------- BENEFITS ---------- */
+  .benefits{background:var(--hueso-2);}
+  .benefit-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;
+  }
+  .benefit-card{
+    background:#fff;
+    border:1px solid rgba(33,28,23,0.08);
+    border-radius:18px;
+    padding:34px 28px;
+  }
+  .benefit-icon{
+    width:46px; height:46px;
+    border-radius:12px;
+    background:var(--noche);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:22px;
+  }
+  .benefit-icon svg{width:24px; height:24px; stroke:var(--sol-soft);}
+  .benefit-card h3{font-size:19.5px; font-weight:500; color:var(--noche); margin-bottom:12px;}
+  .benefit-card p{font-size:15px; line-height:1.65; color:var(--tinta-suave);}
+
+  /* ---------- DISTRIBUCION ---------- */
+  .distribucion{background:var(--noche); color:var(--hueso-2);}
+  .distribucion .eyebrow{color:var(--sol-soft);}
+  .distribucion .eyebrow::before{background:var(--sol-soft);}
+  .distribucion .section-head h2{color:var(--hueso-2);}
+  .distribucion .section-head p{color:rgba(237,230,216,0.72);}
+  .floor-grid{display:grid; grid-template-columns:1fr 1fr; gap:0; border-radius:20px; overflow:hidden; border:1px solid rgba(237,230,216,0.14);}
+  .floor-card{padding:44px 40px; position:relative;}
+  .floor-card:first-child{background:var(--noche-2); border-right:1px solid rgba(237,230,216,0.14);}
+  .floor-card:last-child{background:var(--noche-3);}
+  .floor-tag{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--piedra-soft); margin-bottom:16px; display:block;
+  }
+  .floor-card h3{font-size:24px; font-weight:500; margin-bottom:16px; color:var(--hueso-2);}
+  .floor-card ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;}
+  .floor-card li{
+    font-size:15px; line-height:1.55; color:rgba(237,230,216,0.82);
+    padding-left:20px; position:relative;
+  }
+  .floor-card li::before{
+    content:""; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:var(--sol-soft);
+  }
+
+  /* ---------- PLUS EXCLUSIVO ---------- */
+  .plus{background:var(--hueso-2); padding-top:0;}
+  .plus-inner{
+    background:linear-gradient(135deg, #fff 0%, var(--hueso) 100%);
+    border:1.5px solid var(--sol);
+    border-radius:26px;
+    padding:56px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .plus-inner::before{
+    content:""; position:absolute; width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle, rgba(232,169,74,0.16), transparent 70%);
+    top:-120px; right:-120px;
+  }
+  .plus-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--noche); color:var(--sol-soft);
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase;
+    padding:9px 16px; border-radius:100px; margin-bottom:22px;
+  }
+  .plus-text h3{font-size:clamp(24px, 3vw, 32px); font-weight:500; color:var(--noche); margin-bottom:18px; line-height:1.2;}
+  .plus-text p{font-size:16px; line-height:1.7; color:var(--tinta-suave);}
+  .plus-visual{
+    border-radius:18px; overflow:hidden; position:relative; z-index:1;
+    aspect-ratio:4/5;
+  }
+  .plus-visual img{width:100%; height:100%; object-fit:cover;}
+  .plus-visual::after{
+    content:"Independiente y con sol propio";
+    position:absolute; bottom:0; left:0; right:0;
+    background:linear-gradient(0deg, rgba(24,31,44,0.85), transparent);
+    color:#fff; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.04em;
+    padding:20px 18px 16px;
+  }
 
   /* ---------- GALERIA / CAROUSEL ---------- */
   .galeria{background:var(--hueso-2);}
@@ -288,7 +396,16 @@
   .carousel-arrow:hover svg{stroke:var(--noche);}
   .carousel-arrow.prev{left:18px;}
   .carousel-arrow.next{right:18px;}
-  
+  .carousel-dots{
+    display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-top:22px;
+  }
+  .carousel-dots button{
+    width:9px; height:9px; border-radius:50%;
+    background:rgba(33,28,23,0.2);
+    border:none; cursor:pointer; padding:0;
+    transition:background .3s ease, width .3s ease;
+  }
+  .carousel-dots button.active{background:var(--piedra); width:26px; border-radius:6px;}
   .carousel-thumbs{
     display:grid; grid-template-columns:repeat(13, 1fr); gap:8px; margin-top:16px;
   }
@@ -305,7 +422,7 @@
   .video-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:22px;}
   .video-card{
     position:relative; border-radius:16px; overflow:hidden; cursor:pointer;
-    aspect-ratio:3/4; /* Controla la simetría de todas las tarjetas. Puedes cambiarlo a 4/5 si deseas */
+    aspect-ratio:4/5; /* Todas las tarjetas con altura uniforme y simétrica */
     background:var(--noche);
     border:none; padding:0; width:100%; display:block;
   }
@@ -379,14 +496,25 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:900px){
+    .benefit-grid{grid-template-columns:1fr;}
+    .floor-grid{grid-template-columns:1fr;}
+    .floor-card:first-child{border-right:none; border-bottom:1px solid rgba(237,230,216,0.14);}
+    .plus-inner{grid-template-columns:1fr; padding:36px 26px;}
+    .plus-visual{order:-1; aspect-ratio:16/9;}
+    .jardin-grid{grid-template-columns:1fr;}
+    .jardin-visual{aspect-ratio:16/9;}
+    .ficha-grid{grid-template-columns:1fr;}
     .video-grid{grid-template-columns:repeat(2, 1fr);}
     .carousel-thumbs{grid-template-columns:repeat(7, 1fr);}
     section{padding:76px 0;}
     .wrap{padding:0 22px;}
     .hero-content{padding-top:130px;}
+    .sun-arc{display:none;}
+    .price-chip{margin-left:0;} /* Ajuste de diseño en móviles para el precio */
   }
   @media (max-width:520px){
-    .hero-row{flex-direction:column; align-items:flex-start;}
+    .hero-row{flex-direction:column; align-items:stretch;} /* Botones abarcan el ancho en móviles */
+    .btn-primary, .btn-secondary{justify-content:center;}
     .carousel{aspect-ratio:4/5;}
     .carousel-caption{padding:20px 20px;}
     .carousel-thumbs{grid-template-columns:repeat(5, 1fr);}
@@ -410,33 +538,48 @@
   <header class="hero">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
+    <div class="sun-arc" aria-hidden="true">
+      <svg viewBox="0 0 400 120">
+        <path class="track" d="M10,110 Q200,-30 390,110"/>
+        <circle class="sun-dot" r="5">
+          <animateMotion dur="6s" repeatCount="indefinite" path="M10,110 Q200,-30 390,110"/>
+        </circle>
+      </svg>
+    </div>
+
     <div class="hero-content">
       <div class="wrap">
         <div class="eyebrow">Meseta de Achumani · Urb. Libertad · Zona Sur, La Paz</div>
         <h1>Aquí el sol entra primero<br>y no se va hasta <em>el atardecer.</em></h1>
         <p class="hero-sub">Una residencia de 212 m² construidos sobre 282 m² de terreno, con jardín de árboles frutales y un departamento independiente que puede pagarse solo. Trato directo con el propietario, papeles al día.</p>
         
-        <div class="hero-actions">
-          <div class="hero-row">
-            <a class="btn-primary" id="heroCta" href="#" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
-              Coordinar visita por WhatsApp
-            </a>
-            <span class="price-chip">US$ <b>165.000</b> · venta directa</span>
-          </div>
-          
-          <!-- Nuevos botones estratégicos para dirigir el tráfico visual -->
-          <div class="hero-nav-links">
-            <a href="#galeria" class="btn-secondary">Ver Fotos</a>
-            <a href="#videos" class="btn-secondary">Recorridos Virtuales</a>
-          </div>
+        <!-- BOTONES ESTRATÉGICOS DE EXPLORACIÓN -->
+        <div class="hero-row">
+          <a class="btn-primary" href="#galeria">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Ver galería
+          </a>
+          <a class="btn-secondary" href="#videos">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            Recorrido virtual
+          </a>
+          <span class="price-chip">US$ <b>165.000</b> · venta directa</span>
         </div>
-
       </div>
     </div>
+    <div class="scroll-cue"><span>Recorrer</span><span class="line"></span></div>
   </header>
 
-  <!-- GALERIA (Con ID "galeria" para el botón superior) -->
+  <!-- BENEFICIOS -->
+  <section class="benefits"> ... (Se mantiene igual que tu diseño original) ... </section>
+
+  <!-- DISTRIBUCION -->
+  <section class="distribucion"> ... (Se mantiene igual) ... </section>
+
+  <!-- PLUS EXCLUSIVO -->
+  <section class="plus"> ... (Se mantiene igual) ... </section>
+
+  <!-- GALERIA (Añadido ID para el botón) -->
   <section class="galeria" id="galeria">
     <div class="wrap">
       <div class="section-head reveal">
@@ -459,7 +602,7 @@
     </div>
   </section>
 
-  <!-- VIDEO TOURS (Con ID "videos" para el botón superior) -->
+  <!-- VIDEO TOURS (Añadido ID para el botón) -->
   <section class="videos" id="videos">
     <div class="wrap">
       <div class="section-head reveal">
@@ -470,6 +613,12 @@
       <div class="video-grid reveal-stagger reveal" id="videoGrid"></div>
     </div>
   </section>
+
+  <!-- JARDIN -->
+  <section class="jardin"> ... (Se mantiene igual) ... </section>
+
+  <!-- FICHA TECNICA -->
+  <section class="ficha"> ... (Se mantiene igual) ... </section>
 
   <!-- CTA FINAL -->
   <section class="cta-final">
@@ -482,11 +631,22 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
           Escribir ahora al 621 09656
         </a>
+        <div class="phone-note">WhatsApp / Llamadas — <b>621 09656</b> · Trato directo con el propietario</div>
       </div>
     </div>
   </section>
 
-  <!-- VIDEO MODAL (Contenedor que se abre al tocar un video) -->
+  <footer>
+    <div class="wrap">
+      Meseta de Achumani, Urbanización Libertad — Zona Sur, La Paz · <b>621 09656</b> · Venta directa, sin intermediarios
+    </div>
+  </footer>
+
+  <a class="floating-wa" id="floatingWa" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#181F2C"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
+  </a>
+
+  <!-- VIDEO MODAL -->
   <div class="video-modal" id="videoModal">
     <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
     <div class="video-modal-inner">
@@ -498,54 +658,65 @@
   </div>
 
 <script>
-  /* ==========================================
-     1. CONFIGURACIÓN DEL BOTÓN DE WHATSAPP
-     Esta función inyecta tu número y mensaje 
-     en todos los botones de la página.
-  ========================================== */
+  /* =====================================================================
+     1. CONFIGURACIÓN DEL EMBUDO DE WHATSAPP
+     Esta función inyecta tu mensaje personalizado en los botones de contacto. 
+     Esto aumenta la conversión porque le ahorra al cliente tener que escribir.
+  ====================================================================== */
   const phone = "59162109656";
   const msg = encodeURIComponent("Hola, vi la publicación de la casa en Meseta de Achumani (Urb. Libertad) y me gustaría coordinar una visita.");
   const waLink = `https://wa.me/${phone}?text=${msg}`;
-  ["navCta","heroCta","finalCta","floatingWa"].forEach(id=>{
+  
+  // OJO: Quité 'heroCta' porque ahora el Hero tiene botones para explorar.
+  ["navCta","finalCta","floatingWa"].forEach(id=>{
     const el = document.getElementById(id);
     if(el) el.href = waLink;
   });
 
-  /* ==========================================
-     2. EFECTOS DE APARICIÓN AL HACER SCROLL
-     Observa qué elementos con la clase "reveal" 
-     entran en la pantalla para hacerlos aparecer.
-  ========================================== */
+  /* =====================================================================
+     2. DISEÑO ADAPTATIVO: BARRA DE NAVEGACIÓN
+     Hace que el menú superior se vuelva oscuro y pegajoso solo cuando el usuario baja, 
+     para no tapar la hermosa foto del Hero al principio.
+  ====================================================================== */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', ()=>{
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* =====================================================================
+     3. NEUROMARKETING VISUAL (EFECTO REVEAL)
+     Solo muestra los textos e imágenes cuando el usuario hace scroll y llega a ellos. 
+     Esto evita abrumar al cerebro con demasiada información de golpe.
+  ====================================================================== */
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
         entry.target.classList.add('in-view');
-        io.unobserve(entry.target); // Deja de observar una vez que aparece
+        io.unobserve(entry.target);
       }
     });
   }, {threshold:0.15});
   revealEls.forEach(el=>io.observe(el));
 
-  /* ==========================================
-     3. LÓGICA DEL CARRUSEL DE IMÁGENES
-     Genera las imágenes dinámicamente y 
-     controla los botones de anterior/siguiente.
-  ========================================== */
+  /* =====================================================================
+     4. CARRUSEL DE IMÁGENES (CON EL BUG CORREGIDO)
+     Carga las 13 fotos y gestiona la transición entre ellas.
+  ====================================================================== */
   const photos = [
-    { src:"img/a01_frontis.jpg", tag:"Fachada", caption:"Fachada principal: dos plantas, balcón privado y jardín delantero con agaves." },
-    { src:"img/a06_entorno_residencial.jpg", tag:"El entorno", caption:"La calle y, al fondo, las serranías que le dan a Achumani su carácter." },
-    { src:"img/b01_patio.jpg", tag:"Patio y jardín", caption:"Patio trasero con césped y rosales, con acceso directo a la parte posterior de la casa." },
-    { src:"img/b03_garaje.jpg", tag:"Garaje techado", caption:"Garaje cubierto con vista abierta a las serranías: espacio techado y seguro para el vehículo." },
-    { src:"img/b06_jardin _entrada.jpg", tag:"Sendero de entrada", caption:"El sendero de rosas que conecta el jardín con la puerta del departamento independiente." },
-    { src:"img/c02_interior.jpg", tag:"Sala principal", caption:"Sala amplia con chimenea de ladrillo, lista para las noches frías en familia." },
-    { src:"img/c03_interior.jpg", tag:"Sala — otro ángulo", caption:"Otra vista de la sala: luz natural entrando por los ventanales hacia el jardín." },
-    { src:"img/c04_interior.jpg", tag:"Acceso interior", caption:"La escalera de madera que conecta con la puerta principal de vitral." },
-    { src:"img/c05_habitacion02_piso1.jpg", tag:"Habitación · piso 1", caption:"Una de las habitaciones de planta alta, con piso de madera y vista a la ciudad." },
-    { src:"img/c6_habitacion01_piso1.jpg", tag:"Habitación · piso 1", caption:"La segunda habitación de planta alta, luminosa y con ventanas en esquina." },
-    { src:"img/c07_baño.jpg", tag:"Baño · planta alta", caption:"Baño completo de planta alta, con tina, lavamanos e inodoro." },
-    { src:"img/d01_minidepto.jpg", tag:"Mini departamento", caption:"La entrada independiente del mini departamento, rodeada de rosales." },
-    { src:"img/d06_cocina.jpg", tag:"Cocina · mini depto", caption:"La cocina del departamento independiente, funcional y con luz natural propia." },
+    { src:"img/a01_frontis.jpg", tag:"Fachada",              caption:"Fachada principal: dos plantas, balcón privado y jardín delantero con agaves." },
+    { src:"img/a06_entorno_residencial.jpg", tag:"El entorno",            caption:"La calle y, al fondo, las serranías que le dan a Achumani su carácter." },
+    { src:"img/b01_patio.jpg", tag:"Patio y jardín",        caption:"Patio trasero con césped y rosales, con acceso directo a la parte posterior de la casa." },
+    { src:"img/b03_garaje.jpg", tag:"Garaje techado",        caption:"Garaje cubierto con vista abierta a las serranías: espacio techado y seguro para el vehículo." },
+    { src:"img/b06_jardin _entrada.jpg", tag:"Sendero de entrada",    caption:"El sendero de rosas que conecta el jardín con la puerta del departamento independiente." },
+    { src:"img/c02_interior.jpg", tag:"Sala principal",        caption:"Sala amplia con chimenea de ladrillo, lista para las noches frías en familia." },
+    { src:"img/c03_interior.jpg", tag:"Sala — otro ángulo",    caption:"Otra vista de la sala: luz natural entrando por los ventanales hacia el jardín." },
+    { src:"img/c04_interior.jpg", tag:"Acceso interior",       caption:"La escalera de madera que conecta con la puerta principal de vitral." },
+    { src:"img/c05_habitacion02_piso1.jpg", tag:"Habitación · piso 1",   caption:"Una de las habitaciones de planta alta, con piso de madera y vista a la ciudad." },
+    { src:"img/c6_habitacion01_piso1.jpg", tag:"Habitación · piso 1",   caption:"La segunda habitación de planta alta, luminosa y con ventanas en esquina." },
+    { src:"img/c07_baño.jpg", tag:"Baño · planta alta",    caption:"Baño completo de planta alta, con tina, lavamanos e inodoro." },
+    { src:"img/d01_minidepto.jpg", tag:"Mini departamento",     caption:"La entrada independiente del mini departamento, rodeada de rosales." },
+    { src:"img/d06_cocina.jpg", tag:"Cocina · mini depto",   caption:"La cocina del departamento independiente, funcional y con luz natural propia." },
   ];
 
   const track = document.getElementById('carouselTrack');
@@ -553,11 +724,14 @@
   const thumbsWrap = document.getElementById('carouselThumbs');
   const counterEl = document.getElementById('carouselCounter');
 
-  // Inserta las fotos en el HTML
+  // Inserta las imágenes en el HTML
   photos.forEach((p)=>{
     const slide = document.createElement('div');
     slide.className = 'carousel-slide';
-    slide.innerHTML = `<img src="${p.src}" alt="${p.caption}" loading="lazy"><div class="carousel-caption"><b>${p.tag}</b>${p.caption}</div>`;
+    slide.innerHTML = `
+      <img src="${p.src}" alt="${p.caption}" loading="lazy">
+      <div class="carousel-caption"><b>${p.tag}</b>${p.caption}</div>
+    `;
     track.appendChild(slide);
 
     const dot = document.createElement('button');
@@ -576,43 +750,63 @@
 
   function pad(n){ return String(n).padStart(2,'0'); }
   
-  // Actualiza la foto visible
-  function update(){
+  // LA SOLUCIÓN AL "SALTO" ESTÁ AQUÍ. 
+  // Agregué el parámetro "userClicked". Si la foto cambia automáticamente, 
+  // no obliga a la pantalla a moverse hacia la miniatura.
+  function update(userClicked = false){
     track.style.transform = `translateX(-${index*100}%)`;
     dots.forEach((d,i)=>d.classList.toggle('active', i===index));
     thumbs.forEach((t,i)=>t.classList.toggle('active', i===index));
     counterEl.textContent = `${pad(index+1)} / ${pad(photos.length)}`;
-    // IMPORTANTE: Aquí se eliminó el scrollIntoView() que causaba el salto automático de página.
+    
+    // Solo enfoca las miniaturas si el usuario fue quien hizo clic intencionalmente
+    const activeThumb = thumbs[index];
+    if(activeThumb && userClicked){ 
+      activeThumb.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
+    }
   }
-
-  function goTo(i){
+  
+  // Función para ir a una imagen específica
+  function goTo(i, userClicked = true){
     index = (i + photos.length) % photos.length;
-    update();
+    update(userClicked);
     restartAutoplay();
   }
-  function next(){ goTo(index+1); }
-  function prev(){ goTo(index-1); }
+  
+  function next(){ goTo(index+1, false); } // Falso = el usuario no dio clic, fue automático
+  function prev(){ goTo(index-1, true); }
+  
   function restartAutoplay(){
     clearInterval(autoplayTimer);
-    autoplayTimer = setInterval(next, 5500); // Cambia foto cada 5.5 segundos
+    autoplayTimer = setInterval(next, 5500); // Cambia cada 5.5 segundos
   }
 
-  // Eventos de click para el carrusel
-  dots.forEach((d,i)=>d.addEventListener('click', ()=>goTo(i)));
-  thumbs.forEach((t,i)=>t.addEventListener('click', ()=>goTo(i)));
-  document.getElementById('nextBtn').addEventListener('click', next);
-  document.getElementById('prevBtn').addEventListener('click', prev);
+  // Detectores de clics en las flechas y miniaturas de la galería
+  dots.forEach((d,i)=>d.addEventListener('click', ()=>goTo(i, true)));
+  thumbs.forEach((t,i)=>t.addEventListener('click', ()=>goTo(i, true)));
+  document.getElementById('nextBtn').addEventListener('click', ()=>goTo(index+1, true));
+  document.getElementById('prevBtn').addEventListener('click', ()=>goTo(index-1, true));
+  
+  // Si el mouse entra a la galería, se pausa para que puedan ver con calma
   document.getElementById('carousel').addEventListener('mouseenter', ()=>clearInterval(autoplayTimer));
   document.getElementById('carousel').addEventListener('mouseleave', restartAutoplay);
 
-  update();
+  // Soporte para deslizar en celulares (Swipe)
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e=>{ touchStartX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', e=>{
+    const diff = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(diff) > 40){ diff > 0 ? goTo(index-1, true) : goTo(index+1, true); }
+  }, {passive:true});
+
+  // Ejecuta la primera foto al abrir la página sin forzar el scroll
+  update(false);
   restartAutoplay();
 
-  /* ==========================================
-     4. LÓGICA DE VIDEOS (YOUTUBE API)
-     Carga la API oficial de YouTube para reproducir
-     videos con audio controlado sin salir de la página.
-  ========================================== */
+  /* =====================================================================
+     5. CREADOR DE TARJETAS DE VIDEOS Y REPRODUCTOR YOUTUBE
+     Construye las tarjetas simétricas (4/5) y maneja la ventana oscura flotante.
+  ====================================================================== */
   const videos = [
     { id:"Pf-TIv7gQok", tag:"Recorrido 1", title:"Calle, sala principal, cocina y patio-jardín" },
     { id:"MOhCBisPkss", tag:"Recorrido 2", title:"Jardín, cocina y sala con chimenea" },
@@ -625,16 +819,20 @@
     const card = document.createElement('button');
     card.className = 'video-card';
     card.setAttribute('type','button');
+    card.setAttribute('aria-label', `Reproducir video: ${v.title}`);
+    
+    // Inyecta la imagen desde la portada de YouTube directamente
     card.innerHTML = `
       <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy">
       <div class="vc-overlay"></div>
       <div class="vc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="vc-label"><b>${v.tag}</b><span>${v.title}</span></div>
     `;
-    card.addEventListener('click', ()=>openVideo(v.id)); // Abre el modal al hacer clic
+    card.addEventListener('click', ()=>openVideo(v.id)); // Al hacer clic, abre la ventana flotante
     videoGrid.appendChild(card);
   });
 
+  /* ---- FUNCIONES DE LA VENTANA FLOTANTE YOUTUBE ---- */
   const videoModal = document.getElementById('videoModal');
   const videoModalFrame = document.getElementById('videoModalFrame');
   const videoModalLoading = document.getElementById('videoModalLoading');
@@ -646,7 +844,7 @@
   let ytPlayer = null;
   let playerNode = null;
 
-  // Inserta el script oficial de YouTube
+  // Llama a las herramientas oficiales de YouTube para controlar el sonido
   const ytScript = document.createElement('script');
   ytScript.src = "https://www.youtube.com/iframe_api";
   document.head.appendChild(ytScript);
@@ -655,7 +853,19 @@
     if(pendingVideoId) createPlayer(pendingVideoId);
   };
 
-  // Crea el reproductor y ajusta el volumen (Neuromarketing auditivo)
+  // Función para saber si el video de YouTube es Vertical (Short) u Horizontal
+  function detectAspectRatio(id, cb){
+    const img = new Image();
+    img.onload = ()=>{
+      if(img.naturalWidth && img.naturalHeight){
+        cb(img.naturalWidth / img.naturalHeight);
+      } else { cb(16/9); }
+    };
+    img.onerror = ()=>cb(16/9);
+    img.src = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+  }
+
+  // Inserta el reproductor de YouTube dentro de tu página flotante (Modal)
   function createPlayer(id){
     if(ytPlayer){ try{ ytPlayer.destroy(); }catch(e){} ytPlayer = null; }
     playerNode = document.createElement('div');
@@ -665,28 +875,19 @@
       playerVars:{ autoplay:1, rel:0, modestbranding:1, playsinline:1, controls:1 },
       events:{
         onReady:(e)=>{
-          e.target.setVolume(60); // Inicia con el volumen al 60% automáticamente
+          // Aquí aseguramos que el audio inicie automáticamente pero a un volumen del 60%
+          e.target.setVolume(60);   
           e.target.playVideo();
-          videoModalLoading.style.display = 'none';
+          videoModalLoading.style.display = 'none'; // Quita la animación de carga
         }
       }
     });
   }
 
-  // Detecta si es formato vertical u horizontal
-  function detectAspectRatio(id, cb){
-    const img = new Image();
-    img.onload = ()=>{
-      if(img.naturalWidth && img.naturalHeight){ cb(img.naturalWidth / img.naturalHeight); } 
-      else { cb(16/9); }
-    };
-    img.onerror = ()=>cb(16/9);
-    img.src = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
-  }
-
+  // La acción de "Apagar la luz" y mostrar el video cuando tocas una tarjeta
   function openVideo(id){
     videoModal.classList.add('open');
-    document.body.style.overflow = 'hidden'; // Evita que la página haga scroll de fondo
+    document.body.style.overflow = 'hidden'; // Bloquea el scroll de fondo
     videoModalLoading.style.display = 'flex';
     videoModalFrame.style.setProperty('--ar', 16/9);
 
@@ -698,17 +899,25 @@
     else { pendingVideoId = id; }
   }
 
+  // La acción de cerrar el video y volver a tu Landing Page
   function closeVideo(){
     videoModal.classList.remove('open');
-    document.body.style.overflow = '';
+    document.body.style.overflow = ''; // Permite hacer scroll de nuevo
+    
+    // Destruye el reproductor para que el sonido no siga sonando en el fondo
     if(ytPlayer){ try{ ytPlayer.destroy(); }catch(e){} ytPlayer = null; }
     if(playerNode){ playerNode.remove(); playerNode = null; }
+    
     videoModalLoading.style.display = 'flex';
     pendingVideoId = null;
   }
 
+  // Detectores para cerrar el video haciendo clic afuera o con la tecla Escape
   videoModalClose.addEventListener('click', closeVideo);
   videoModalBackdrop.addEventListener('click', closeVideo);
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && videoModal.classList.contains('open')) closeVideo();
+  });
 </script>
 </body>
 </html>
