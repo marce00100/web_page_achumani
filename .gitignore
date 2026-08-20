@@ -1,0 +1,6 @@
+# Ignorar carpetas
+.git/
+.vscode/
+
+# Ignorar archivos específicos
+push.sh
