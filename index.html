@@ -108,7 +108,7 @@
   }
   .hero-bg{
     position:absolute; inset:0;
-    background-image:url('img/a01.jpg');
+    background-image:url('img/a01_frontis.jpg');
     background-size:cover;
     background-position:center 65%;
     transform:scale(1.08);
@@ -470,6 +470,81 @@
     .carousel{aspect-ratio:4/5;}
     .carousel-caption{padding:20px 20px;}
   }
+
+
+  /* cards de los videos */
+  /* ---------- RECORRIDO VIRTUAL (VIDEOS) ---------- */
+  .videos-tours { background: var(--noche); padding-top: 60px; padding-bottom: 110px; }
+  .videos-tours .section-head h2 { color: var(--hueso-2); }
+  .videos-tours .eyebrow { color: var(--sol-soft); }
+  .videos-tours .eyebrow::before { background: var(--sol-soft); }
+  
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .video-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 16/9;
+    background: var(--noche-2);
+    border: 1px solid rgba(237,230,216,0.14);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .video-card.vertical { aspect-ratio: 9/16; } /* Para los Shorts */
+  .video-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+  .video-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: opacity 0.3s ease; }
+  .video-card:hover img { opacity: 0.4; }
+  
+  .play-btn {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 60px; height: 60px; border-radius: 50%;
+    background: var(--sol); color: var(--noche);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 15px rgba(232,169,74,0.4);
+    transition: transform 0.3s ease;
+  }
+  .video-card:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); }
+  .play-btn svg { width: 24px; height: 24px; margin-left: 4px; }
+  
+  .video-title {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px 16px 12px;
+    background: linear-gradient(0deg, rgba(24,31,44,0.95), transparent);
+    color: var(--hueso-2); font-size: 15px; font-weight: 500;
+  }
+
+  /* MODAL DE VIDEO */
+  .video-modal {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(10,12,18,0.95);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.4s ease;
+    padding: 20px;
+  }
+  .video-modal.active { opacity: 1; pointer-events: all; }
+  .modal-close {
+    position: absolute; top: 24px; right: 24px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: none;
+    color: #fff; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.3s;
+  }
+  .modal-close:hover { background: var(--sol); color: var(--noche); }
+  .modal-content {
+    width: 100%; max-width: 900px;
+    aspect-ratio: 16/9; background: #000;
+    border-radius: 12px; overflow: hidden;
+    position: relative;
+  }
+  .modal-content.is-vertical { max-width: 400px; aspect-ratio: 9/16; }
+  .modal-content iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
 </style>
 </head>
 <body>
@@ -591,7 +666,7 @@
           <p>Con sala, cocina, baño y dos dormitorios propios, este departamento independiente recibe sol directo toda la tarde. Puede alojar a un familiar con total privacidad, convertirse en oficina o estudio, o generar un ingreso mensual extra por alquiler. Es, literalmente, una segunda posibilidad dentro de la misma propiedad — y pocas propiedades en la zona ofrecen esto.</p>
         </div>
         <div class="plus-visual">
-          <img src="img/b01.jpg" alt="Acceso independiente al departamento y jardín lateral" loading="lazy">
+          <img src="img/d01_minidepto.jpg" alt="Acceso independiente al departamento y jardín lateral" loading="lazy">
         </div>
       </div>
     </div>
@@ -606,7 +681,7 @@
       </div>
 
       <div class="carousel reveal" id="carousel">
-        <div class="carousel-track" id="carouselTrack">
+        <!-- <div class="carousel-track" id="carouselTrack">
           <div class="carousel-slide">
             <img src="img/a01.jpg" alt="Fachada principal de la casa" loading="lazy">
             <div class="carousel-caption"><b>Fachada principal</b>Dos plantas, balcón privado y jardín delantero con agaves.</div>
@@ -627,6 +702,53 @@
             <img src="img/a06.jpg" alt="Calle y serranías de Achumani" loading="lazy">
             <div class="carousel-caption"><b>El entorno</b>La calle y, al fondo, las serranías que le dan a Achumani su carácter.</div>
           </div>
+        </div> -->
+        <div class="carousel-track" id="carouselTrack">
+          <!-- 1. Fachada -->
+          <div class="carousel-slide">
+            <img src="img/a01_frontis.jpg" alt="Fachada principal de la casa" loading="lazy">
+            <div class="carousel-caption"><b>Fachada y Exteriores</b>Arquitectura sólida de dos plantas, balcón privado y un diseño pensado para aprovechar el sol.</div>
+          </div>
+          <!-- 2. Sala Principal -->
+          <div class="carousel-slide">
+            <img src="img/c02_interior.jpg" alt="Sala principal con chimenea" loading="lazy">
+            <div class="carousel-caption"><b>El Corazón del Hogar</b>Sala principal amplia y luminosa, coronada por una hermosa chimenea de ladrillo.</div>
+          </div>
+          <!-- 3. Perspectiva Sala -->
+          <div class="carousel-slide">
+            <img src="img/c03_interior.jpg" alt="Perspectiva de la sala y luz natural" loading="lazy">
+            <div class="carousel-caption"><b>Luz Natural</b>El diseño de los ventanales permite que el sol bañe los interiores durante gran parte del día.</div>
+          </div>
+          <!-- 4. Distribución Interior -->
+          <div class="carousel-slide">
+            <img src="img/c04_interior.jpg" alt="Gradas y hall de distribución" loading="lazy">
+            <div class="carousel-caption"><b>Distribución Fluida</b>Detalles clásicos en madera y bloques de vidrio que distribuyen la luz hacia la planta alta.</div>
+          </div>
+          <!-- 5. Cocina -->
+          <div class="carousel-slide">
+            <img src="img/d06_cocina.jpg" alt="Cocina iluminada" loading="lazy">
+            <div class="carousel-caption"><b>Cocina Funcional</b>Espacio práctico, ventilado y con luz directa, listo para el día a día de la familia.</div>
+          </div>
+          <!-- 6. Jardín Entrada -->
+          <div class="carousel-slide">
+            <img src="img/b06_jardin _entrada.jpg" alt="Jardín de entrada con rosales" loading="lazy">
+            <div class="carousel-caption"><b>Bienvenida Natural</b>Un pasillo verde adornado con rosales te recibe cada vez que llegas a casa.</div>
+          </div>
+          <!-- 7. Patio Trasero / Jardín -->
+          <div class="carousel-slide">
+            <img src="img/b01_patio.jpg" alt="Patio trasero y conexión al departamento" loading="lazy">
+            <div class="carousel-caption"><b>Espacio de Desconexión</b>Un jardín privado con árboles que conecta de forma armónica con el departamento independiente.</div>
+          </div>
+          <!-- 8. Garaje -->
+          <div class="carousel-slide">
+            <img src="img/b03_garaje.jpg" alt="Garaje techado" loading="lazy">
+            <div class="carousel-caption"><b>Comodidad y Seguridad</b>Garaje privado con estructura techada, integrado perfectamente al ingreso del terreno.</div>
+          </div>
+          <!-- 9. Entorno -->
+          <div class="carousel-slide">
+            <img src="img/a06_entorno_residencial.jpg" alt="Entorno residencial de Achumani" loading="lazy">
+            <div class="carousel-caption"><b>El Entorno</b>Calles tranquilas, seguras y la imponente vista a las serranías que caracterizan a Achumani.</div>
+          </div>
         </div>
         <div class="carousel-arrow prev" id="prevBtn" role="button" aria-label="Anterior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
@@ -638,6 +760,72 @@
       <div class="carousel-dots" id="carouselDots"></div>
     </div>
   </section>
+
+  <!-- VIDEOS -->
+  <!-- RECORRIDOS VIRTUALES (VIDEOS) -->
+  <section class="videos-tours">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Experiencia Inmersiva</div>
+        <h2>Camina por la casa, a tu ritmo.</h2>
+        <p>Selecciona un recorrido para explorar cada detalle antes de tu visita presencial.</p>
+      </div>
+
+      <div class="video-grid reveal">
+        
+        <!-- VIDEO 1: Vertical (Short) -->
+        <div class="video-card vertical" data-video="https://www.youtube.com/embed/Pf-TIv7gQok?autoplay=1&mute=1" data-vertical="true">
+          <img src="img/a01_frontis.jpg" alt="Video fachada" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-title">1. El Primer Vistazo (Fachada a Patio)</div>
+        </div>
+
+        <!-- VIDEO 2: Vertical (Short) -->
+        <div class="video-card vertical" data-video="https://www.youtube.com/embed/MOhCBisPkss?autoplay=1&mute=1" data-vertical="true">
+          <img src="img/c02_interior.jpg" alt="Video interiores" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-title">2. El Corazón del Hogar (Jardín a Chimenea)</div>
+        </div>
+
+        <!-- VIDEO 3: Horizontal -->
+        <!-- CORREGIDO: Se añadió www.youtube.com -->
+        <div class="video-card" data-video="https://www.youtube.com/embed/qIrhF_pfG6w?autoplay=1&mute=1" data-vertical="false">
+          <img src="img/c04_interior.jpg" alt="Video planta alta" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-title">3. Zona de Descanso (Planta Alta)</div>
+        </div>
+
+        <!-- VIDEO 4: Horizontal -->
+        <!-- CORREGIDO: Se añadió www.youtube.com -->
+        <div class="video-card" data-video="https://www.youtube.com/embed/UhZKEd928w4?autoplay=1&mute=1" data-vertical="false">
+          <img src="img/b01_patio.jpg" alt="Video departamento" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-title">4. Plus de Inversión (Mini-departamento)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL FLOTANTE OCULTO PARA LOS VIDEOS -->
+  <!-- <div class="video-modal" id="videoModal">
+    <button class="modal-close" id="closeModal" aria-label="Cerrar video">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-content" id="modalContent">
+      <iframe id="videoIframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div> -->
+  
+  <!-- MODAL FLOTANTE OCULTO PARA LOS VIDEOS -->
+  <div class="video-modal" id="videoModal">
+    <button class="modal-close" id="closeModal" aria-label="Cerrar video">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-content" id="modalContent">
+      <!-- Iframe reforzado con políticas de origen y permisos extendidos -->
+      <iframe id="videoIframe" src="" title="Recorrido Virtual Inmobiliario" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
 
   <!-- JARDIN -->
   <section class="jardin">
@@ -662,6 +850,9 @@
     </div>
   </section>
 
+
+
+  <iframe width="1689" height="652" src="https://www.youtube.com/embed/qIrhF_pfG6w" title="Casa Meseta de Achumani - planta alta" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   <!-- FICHA TECNICA -->
   <section class="ficha">
     <div class="wrap">
@@ -787,6 +978,44 @@
 
   update();
   restartAutoplay();
+
+  // JS PARA LAS CARDS DE VIDEO
+  // Lógica para el Reproductor Modal de Videos
+  const videoCards = document.querySelectorAll('.video-card');
+  const videoModal = document.getElementById('videoModal');
+  const closeModal = document.getElementById('closeModal');
+  const videoIframe = document.getElementById('videoIframe');
+  const modalContent = document.getElementById('modalContent');
+
+  videoCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const videoUrl = card.getAttribute('data-video');
+      const isVertical = card.getAttribute('data-vertical') === 'true';
+      
+      // Adaptar el modal si es formato Short (Vertical)
+      if(isVertical) {
+        modalContent.classList.add('is-vertical');
+      } else {
+        modalContent.classList.remove('is-vertical');
+      }
+
+      videoIframe.src = videoUrl; // Carga el video
+      videoModal.classList.add('active'); // Muestra la pantalla negra
+    });
+  });
+
+  // Cerrar modal
+  const closeVideo = () => {
+    videoModal.classList.remove('active');
+    setTimeout(() => { videoIframe.src = ''; }, 400); // Detiene el audio
+  };
+
+  closeModal.addEventListener('click', closeVideo);
+  
+  // Cerrar al hacer clic fuera del video
+  videoModal.addEventListener('click', (e) => {
+    if(e.target === videoModal) closeVideo();
+  });
 </script>
 </body>
 </html>
