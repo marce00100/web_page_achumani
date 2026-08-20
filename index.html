@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casa en Meseta de Achumani — Zona Sur, La Paz</title>
+
+<!-- OPCIÓN A: Favicon con imagen (Si ya tienes un ícono de tu inmobiliaria o logo en la carpeta img) -->
+<!-- <link rel="icon" href="img/favicon.png" type="image/png"> -->
+
+<!-- OPCIÓN B: Favicon temporal con Emoji de Casa (Muy moderno y funciona de inmediato sin subir imágenes) -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏡</text></svg>">
+
+
 <meta name="description" content="Residencia de 212 m² construidos en Urbanización Libertad, Meseta de Achumani. Jardín, departamento independiente y venta directa.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -485,7 +493,8 @@
     gap: 24px;
     margin-top: 40px;
   }
-  .video-card {
+  
+  /*.video-card {
     position: relative;
     border-radius: 16px;
     overflow: hidden;
@@ -495,7 +504,20 @@
     border: 1px solid rgba(237,230,216,0.14);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .video-card.vertical { aspect-ratio: 9/16; } /* Para los Shorts */
+  .video-card.vertical { aspect-ratio: 9/16; } */ /* Para los Shorts */
+
+  .video-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    /* Unificamos todas las tarjetas a una proporción elegante (4 de ancho por 5 de alto) */
+    aspect-ratio: 4/5; 
+    background: var(--noche-2);
+    border: 1px solid rgba(237,230,216,0.14);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
   .video-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
   .video-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: opacity 0.3s ease; }
   .video-card:hover img { opacity: 0.4; }
@@ -774,14 +796,14 @@
       <div class="video-grid reveal">
         
         <!-- VIDEO 1: Vertical (Short) -->
-        <div class="video-card vertical" data-video="https://www.youtube.com/embed/Pf-TIv7gQok?autoplay=1&mute=1" data-vertical="true">
+        <div class="video-card vertical" data-video="https://www.youtube.com/embed/Pf-TIv7gQok?autoplay=1" data-vertical="true">
           <img src="img/a01_frontis.jpg" alt="Video fachada" loading="lazy">
           <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
           <div class="video-title">1. El Primer Vistazo (Fachada a Patio)</div>
         </div>
 
         <!-- VIDEO 2: Vertical (Short) -->
-        <div class="video-card vertical" data-video="https://www.youtube.com/embed/MOhCBisPkss?autoplay=1&mute=1" data-vertical="true">
+        <div class="video-card vertical" data-video="https://www.youtube.com/embed/MOhCBisPkss?autoplay=1" data-vertical="true">
           <img src="img/c02_interior.jpg" alt="Video interiores" loading="lazy">
           <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
           <div class="video-title">2. El Corazón del Hogar (Jardín a Chimenea)</div>
@@ -789,7 +811,7 @@
 
         <!-- VIDEO 3: Horizontal -->
         <!-- CORREGIDO: Se añadió www.youtube.com -->
-        <div class="video-card" data-video="https://www.youtube.com/embed/qIrhF_pfG6w?autoplay=1&mute=1" data-vertical="false">
+        <div class="video-card" data-video="https://www.youtube.com/embed/qIrhF_pfG6w?autoplay=1" data-vertical="false">
           <img src="img/c04_interior.jpg" alt="Video planta alta" loading="lazy">
           <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
           <div class="video-title">3. Zona de Descanso (Planta Alta)</div>
@@ -797,7 +819,7 @@
 
         <!-- VIDEO 4: Horizontal -->
         <!-- CORREGIDO: Se añadió www.youtube.com -->
-        <div class="video-card" data-video="https://www.youtube.com/embed/UhZKEd928w4?autoplay=1&mute=1" data-vertical="false">
+        <div class="video-card" data-video="https://www.youtube.com/embed/UhZKEd928w4?autoplay=1" data-vertical="false">
           <img src="img/b01_patio.jpg" alt="Video departamento" loading="lazy">
           <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
           <div class="video-title">4. Plus de Inversión (Mini-departamento)</div>
