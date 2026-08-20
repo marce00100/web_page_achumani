@@ -7,8 +7,10 @@
 <meta name="description" content="Residencia de 212 m² construidos en Urbanización Libertad, Meseta de Achumani. Jardín, departamento independiente y venta directa.">
 <meta name="theme-color" content="#181F2C">
 
-<!-- Favicon estratégico para generar confianza en la pestaña del navegador -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏡</text></svg>">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<!-- <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"> -->
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-64.png">
+<link rel="shortcut icon" href="favicon.ico">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +33,7 @@
     --max:1180px;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;} /* Permite que los enlaces internos naveguen de forma suave */
+  html{scroll-behavior:smooth;}
   body{
     margin:0;
     font-family:'Work Sans', sans-serif;
@@ -158,20 +160,12 @@
     opacity:0; transform:translateY(14px);
     animation:riseIn .9s ease .45s forwards;
   }
-  
-  /* Contenedor de Botones Principales y Secundarios */
-  .hero-actions {
-    margin-top: 38px;
+  .hero-row{
+    margin-top:38px;
+    display:flex; flex-wrap:wrap; align-items:center; gap:20px;
     opacity:0; transform:translateY(14px);
     animation:riseIn .9s ease .62s forwards;
   }
-  .hero-row{
-    display:flex; flex-wrap:wrap; align-items:center; gap:20px;
-  }
-  .hero-nav-links {
-    display: flex; gap: 16px; margin-top: 24px;
-  }
-
   .btn-primary{
     background:var(--sol);
     color:var(--noche);
@@ -186,23 +180,6 @@
   }
   .btn-primary svg{width:19px; height:19px; flex-shrink:0;}
   .btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(232,169,74,0.4); background:var(--sol-soft);}
-  
-  .btn-secondary {
-    background: rgba(237,230,216,0.1);
-    color: var(--hueso-2);
-    border: 1px solid rgba(237,230,216,0.3);
-    font-weight: 500;
-    font-size: 14.5px;
-    padding: 12px 24px;
-    border-radius: 100px;
-    transition: background 0.25s, border-color 0.25s;
-    backdrop-filter: blur(4px);
-  }
-  .btn-secondary:hover {
-    background: rgba(237,230,216,0.2);
-    border-color: var(--hueso-2);
-  }
-
   .price-chip{
     font-family:'JetBrains Mono', monospace;
     color:var(--hueso-2);
@@ -213,6 +190,38 @@
     border-radius:100px;
   }
   .price-chip b{color:var(--sol-soft); font-weight:600;}
+  .scroll-cue{
+    position:absolute; right:32px; bottom:26px; z-index:2;
+    color:rgba(237,230,216,0.75);
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+  }
+  .scroll-cue .line{width:1px; height:34px; background:rgba(237,230,216,0.5); position:relative; overflow:hidden;}
+  .scroll-cue .line::after{
+    content:""; position:absolute; left:0; top:-100%; width:100%; height:100%;
+    background:var(--sol-soft);
+    animation:scrollLine 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollLine{ 50%{top:0;} 100%{top:100%;} }
+
+  /* sun arc signature */
+  .sun-arc{position:absolute; top:64px; left:0; right:0; z-index:2; display:flex; justify-content:center; pointer-events:none;}
+  .sun-arc svg{width:min(560px, 80vw); height:auto; overflow:visible;}
+  .sun-arc path{
+    fill:none; stroke:rgba(237,230,216,0.32); stroke-width:1.2; stroke-dasharray:2 6; stroke-linecap:round;
+  }
+  .sun-arc circle.sun-dot{
+    fill:var(--sol-soft);
+    filter:drop-shadow(0 0 10px rgba(242,200,121,0.8));
+  }
+  .sun-arc .track{
+    stroke-dasharray:340; stroke-dashoffset:340;
+    animation:drawArc 1.8s ease .4s forwards;
+  }
+  @keyframes drawArc{ to{stroke-dashoffset:0;} }
 
   /* ---------- SECTIONS GENERIC ---------- */
   section{padding:110px 0;}
@@ -236,6 +245,89 @@
   .reveal-stagger.in-view > *:nth-child(1){transition-delay:.05s;}
   .reveal-stagger.in-view > *:nth-child(2){transition-delay:.16s;}
   .reveal-stagger.in-view > *:nth-child(3){transition-delay:.27s;}
+
+  /* ---------- BENEFITS ---------- */
+  .benefits{background:var(--hueso-2);}
+  .benefit-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;
+  }
+  .benefit-card{
+    background:#fff;
+    border:1px solid rgba(33,28,23,0.08);
+    border-radius:18px;
+    padding:34px 28px;
+  }
+  .benefit-icon{
+    width:46px; height:46px;
+    border-radius:12px;
+    background:var(--noche);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:22px;
+  }
+  .benefit-icon svg{width:24px; height:24px; stroke:var(--sol-soft);}
+  .benefit-card h3{font-size:19.5px; font-weight:500; color:var(--noche); margin-bottom:12px;}
+  .benefit-card p{font-size:15px; line-height:1.65; color:var(--tinta-suave);}
+
+  /* ---------- DISTRIBUCION ---------- */
+  .distribucion{background:var(--noche); color:var(--hueso-2);}
+  .distribucion .eyebrow{color:var(--sol-soft);}
+  .distribucion .eyebrow::before{background:var(--sol-soft);}
+  .distribucion .section-head h2{color:var(--hueso-2);}
+  .distribucion .section-head p{color:rgba(237,230,216,0.72);}
+  .floor-grid{display:grid; grid-template-columns:1fr 1fr; gap:0; border-radius:20px; overflow:hidden; border:1px solid rgba(237,230,216,0.14);}
+  .floor-card{padding:44px 40px; position:relative;}
+  .floor-card:first-child{background:var(--noche-2); border-right:1px solid rgba(237,230,216,0.14);}
+  .floor-card:last-child{background:var(--noche-3);}
+  .floor-tag{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--piedra-soft); margin-bottom:16px; display:block;
+  }
+  .floor-card h3{font-size:24px; font-weight:500; margin-bottom:16px; color:var(--hueso-2);}
+  .floor-card ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;}
+  .floor-card li{
+    font-size:15px; line-height:1.55; color:rgba(237,230,216,0.82);
+    padding-left:20px; position:relative;
+  }
+  .floor-card li::before{
+    content:""; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:var(--sol-soft);
+  }
+
+  /* ---------- PLUS EXCLUSIVO ---------- */
+  .plus{background:var(--hueso-2); padding-top:0;}
+  .plus-inner{
+    background:linear-gradient(135deg, #fff 0%, var(--hueso) 100%);
+    border:1.5px solid var(--sol);
+    border-radius:26px;
+    padding:56px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .plus-inner::before{
+    content:""; position:absolute; width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle, rgba(232,169,74,0.16), transparent 70%);
+    top:-120px; right:-120px;
+  }
+  .plus-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--noche); color:var(--sol-soft);
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase;
+    padding:9px 16px; border-radius:100px; margin-bottom:22px;
+  }
+  .plus-text h3{font-size:clamp(24px, 3vw, 32px); font-weight:500; color:var(--noche); margin-bottom:18px; line-height:1.2;}
+  .plus-text p{font-size:16px; line-height:1.7; color:var(--tinta-suave);}
+  .plus-visual{
+    border-radius:18px; overflow:hidden; position:relative; z-index:1;
+    aspect-ratio:4/5;
+  }
+  .plus-visual img{width:100%; height:100%; object-fit:cover;}
+  .plus-visual::after{
+    content:"Independiente y con sol propio";
+    position:absolute; bottom:0; left:0; right:0;
+    background:linear-gradient(0deg, rgba(24,31,44,0.85), transparent);
+    color:#fff; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.04em;
+    padding:20px 18px 16px;
+  }
 
   /* ---------- GALERIA / CAROUSEL ---------- */
   .galeria{background:var(--hueso-2);}
@@ -288,7 +380,16 @@
   .carousel-arrow:hover svg{stroke:var(--noche);}
   .carousel-arrow.prev{left:18px;}
   .carousel-arrow.next{right:18px;}
-  
+  .carousel-dots{
+    display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-top:22px;
+  }
+  .carousel-dots button{
+    width:9px; height:9px; border-radius:50%;
+    background:rgba(33,28,23,0.2);
+    border:none; cursor:pointer; padding:0;
+    transition:background .3s ease, width .3s ease;
+  }
+  .carousel-dots button.active{background:var(--piedra); width:26px; border-radius:6px;}
   .carousel-thumbs{
     display:grid; grid-template-columns:repeat(13, 1fr); gap:8px; margin-top:16px;
   }
@@ -305,8 +406,7 @@
   .video-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:22px;}
   .video-card{
     position:relative; border-radius:16px; overflow:hidden; cursor:pointer;
-    aspect-ratio:3/4; /* Controla la simetría de todas las tarjetas. Puedes cambiarlo a 4/5 si deseas */
-    background:var(--noche);
+    aspect-ratio:3/4; background:var(--noche);
     border:none; padding:0; width:100%; display:block;
   }
   .video-card img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease;}
@@ -377,13 +477,99 @@
   .video-modal-loading .dot:nth-child(3){animation-delay:.3s;}
   @keyframes blink{ 0%,100%{opacity:.25;} 50%{opacity:1;} }
 
+  /* ---------- JARDIN ---------- */
+  .jardin{background:var(--hueso-2);}
+  .jardin-grid{display:grid; grid-template-columns:0.95fr 1.05fr; gap:56px; align-items:center;}
+  .jardin-visual{border-radius:20px; overflow:hidden; aspect-ratio:4/5;}
+  .jardin-visual img{width:100%; height:100%; object-fit:cover;}
+  .jardin-text h2{font-size:clamp(26px,3.2vw,36px); color:var(--noche); font-weight:500; margin-bottom:20px; line-height:1.18;}
+  .jardin-text p{font-size:16px; line-height:1.75; color:var(--tinta-suave); margin-bottom:16px;}
+  .jardin-tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
+  .jardin-tags span{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.04em;
+    background:rgba(92,107,75,0.12); color:var(--musgo);
+    padding:8px 14px; border-radius:100px;
+  }
+
+  /* ---------- FICHA TECNICA ---------- */
+  .ficha{background:var(--noche); color:var(--hueso-2);}
+  .ficha .eyebrow{color:var(--sol-soft);} .ficha .eyebrow::before{background:var(--sol-soft);}
+  .ficha-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:0;
+    border:1px solid rgba(237,230,216,0.14); border-radius:22px; overflow:hidden;
+  }
+  .ficha-table{padding:44px 44px; background:var(--noche-2);}
+  .ficha-row{
+    display:flex; justify-content:space-between; gap:24px;
+    padding:18px 0; border-bottom:1px solid rgba(237,230,216,0.1);
+    font-family:'JetBrains Mono', monospace; font-size:14px;
+  }
+  .ficha-row:last-child{border-bottom:none;}
+  .ficha-row span:first-child{color:rgba(237,230,216,0.55); letter-spacing:0.03em;}
+  .ficha-row span:last-child{color:var(--hueso-2); text-align:right; font-weight:500;}
+  .ficha-price{
+    background:var(--noche-3);
+    padding:44px;
+    display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:18px;
+  }
+  .ficha-price small{font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--sol-soft);}
+  .ficha-price .amount{font-family:'Fraunces', serif; font-size:clamp(34px,4vw,48px); font-weight:500; color:var(--hueso-2);}
+  .ficha-price p{font-size:14.5px; color:rgba(237,230,216,0.72); line-height:1.6;}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background:linear-gradient(180deg, var(--hueso-2), var(--hueso));
+    text-align:center;
+    padding:120px 0 130px;
+  }
+  .cta-final .wrap{max-width:640px;}
+  .cta-final h2{font-size:clamp(28px,4vw,44px); color:var(--noche); font-weight:500; line-height:1.18; margin-bottom:20px;}
+  .cta-final p{font-size:16.5px; color:var(--tinta-suave); line-height:1.7; margin-bottom:38px;}
+  .btn-primary.large{padding:19px 34px; font-size:16.5px;}
+  .phone-note{
+    margin-top:22px; font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--tinta-suave); letter-spacing:0.02em;
+  }
+  .phone-note b{color:var(--piedra);}
+
+  footer{
+    background:var(--noche); color:rgba(237,230,216,0.55);
+    padding:34px 0; text-align:center; font-size:13px;
+  }
+  footer b{color:var(--sol-soft);}
+
+  /* floating whatsapp */
+  .floating-wa{
+    position:fixed; right:24px; bottom:24px; z-index:200;
+    width:60px; height:60px; border-radius:50%;
+    background:var(--sol);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 28px rgba(0,0,0,0.28);
+    animation:pulseWA 2.6s ease-in-out infinite;
+    transition:transform .25s ease;
+  }
+  .floating-wa:hover{transform:scale(1.08);}
+  .floating-wa svg{width:28px; height:28px;}
+  @keyframes pulseWA{
+    0%,100%{box-shadow:0 12px 28px rgba(0,0,0,0.28), 0 0 0 0 rgba(232,169,74,0.5);}
+    50%{box-shadow:0 12px 28px rgba(0,0,0,0.28), 0 0 0 12px rgba(232,169,74,0);}
+  }
+
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:900px){
+    .benefit-grid{grid-template-columns:1fr;}
+    .floor-grid{grid-template-columns:1fr;}
+    .floor-card:first-child{border-right:none; border-bottom:1px solid rgba(237,230,216,0.14);}
+    .plus-inner{grid-template-columns:1fr; padding:36px 26px;}
+    .plus-visual{order:-1; aspect-ratio:16/9;}
+    .jardin-grid{grid-template-columns:1fr;}
+    .jardin-visual{aspect-ratio:16/9;}
+    .ficha-grid{grid-template-columns:1fr;}
     .video-grid{grid-template-columns:repeat(2, 1fr);}
     .carousel-thumbs{grid-template-columns:repeat(7, 1fr);}
     section{padding:76px 0;}
     .wrap{padding:0 22px;}
     .hero-content{padding-top:130px;}
+    .sun-arc{display:none;}
   }
   @media (max-width:520px){
     .hero-row{flex-direction:column; align-items:flex-start;}
@@ -410,34 +596,117 @@
   <header class="hero">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
+
+    <div class="sun-arc" aria-hidden="true">
+      <svg viewBox="0 0 400 120">
+        <path class="track" d="M10,110 Q200,-30 390,110"/>
+        <circle class="sun-dot" r="5">
+          <animateMotion dur="6s" repeatCount="indefinite" path="M10,110 Q200,-30 390,110"/>
+        </circle>
+      </svg>
+    </div>
+
     <div class="hero-content">
       <div class="wrap">
         <div class="eyebrow">Meseta de Achumani · Urb. Libertad · Zona Sur, La Paz</div>
         <h1>Aquí el sol entra primero<br>y no se va hasta <em>el atardecer.</em></h1>
         <p class="hero-sub">Una residencia de 212 m² construidos sobre 282 m² de terreno, con jardín de árboles frutales y un departamento independiente que puede pagarse solo. Trato directo con el propietario, papeles al día.</p>
-        
-        <div class="hero-actions">
-          <div class="hero-row">
-            <a class="btn-primary" id="heroCta" href="#" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
-              Coordinar visita por WhatsApp
-            </a>
-            <span class="price-chip">US$ <b>165.000</b> · venta directa</span>
-          </div>
-          
-          <!-- Nuevos botones estratégicos para dirigir el tráfico visual -->
-          <div class="hero-nav-links">
-            <a href="#galeria" class="btn-secondary">Ver Fotos</a>
-            <a href="#videos" class="btn-secondary">Recorridos Virtuales</a>
-          </div>
+        <div class="hero-row">
+          <a class="btn-primary" id="heroCta" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
+            Coordinar visita por WhatsApp
+          </a>
+          <span class="price-chip">US$ <b>165.000</b> · venta directa</span>
         </div>
-
       </div>
     </div>
+
+    <div class="scroll-cue"><span>Recorrer</span><span class="line"></span></div>
   </header>
 
-  <!-- GALERIA (Con ID "galeria" para el botón superior) -->
-  <section class="galeria" id="galeria">
+  <!-- BENEFICIOS -->
+  <section class="benefits">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Por qué se siente distinta</div>
+        <h2>No es solo una casa con buena luz. Es una casa que trabaja a tu favor.</h2>
+        <p>Tres razones que explican por qué las propiedades de esta zona no suelen quedarse mucho tiempo disponibles.</p>
+      </div>
+      <div class="benefit-grid reveal-stagger reveal">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+          </div>
+          <h3>Sol de sobra, todo el año</h3>
+          <p>La orientación de la casa deja entrar luz natural durante todas las estaciones. Ambientes cálidos, menos gasto en calefacción y más ganas de quedarse en casa.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/></svg>
+          </div>
+          <h3>Espacio para vivir, no solo para caber</h3>
+          <p>212 m² construidos en dos plantas, más un departamento independiente. Sala con chimenea, dormitorios amplios y un balcón con vista propia.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.4 8.4-7 10-3.6-1.6-7-5-7-10V6l7-3z"/></svg>
+          </div>
+          <h3>Una zona que sigue subiendo de valor</h3>
+          <p>Achumani es una de las zonas residenciales más consolidadas de La Paz: calles seguras, entorno tranquilo y una proyección de plusvalía sólida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISTRIBUCION -->
+  <section class="distribucion">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Cómo se vive esta casa</div>
+        <h2>Dos plantas pensadas para las distintas horas del día.</h2>
+        <p>De la sala con chimenea en la planta baja al balcón con vista en la planta alta: cada nivel tiene su propio momento.</p>
+      </div>
+      <div class="floor-grid reveal">
+        <div class="floor-card">
+          <span class="floor-tag">Planta baja</span>
+          <h3>Para reunirse</h3>
+          <ul>
+            <li>Sala amplia con chimenea de ladrillo, ideal para las tardes largas en familia.</li>
+            <li>Cocina funcional, lista para el día a día.</li>
+            <li>Dos dormitorios y un baño completo.</li>
+          </ul>
+        </div>
+        <div class="floor-card">
+          <span class="floor-tag">Planta alta</span>
+          <h3>Para descansar</h3>
+          <ul>
+            <li>Dos habitaciones llenas de luz natural.</li>
+            <li>La principal se abre a un balcón privado con vista a las serranías de Achumani.</li>
+            <li>Un segundo baño completo, independiente del de planta baja.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLUS EXCLUSIVO -->
+  <section class="plus">
+    <div class="wrap">
+      <div class="plus-inner reveal">
+        <div class="plus-text">
+          <span class="plus-badge">Plus exclusivo</span>
+          <h3>Una casa dentro de la casa.</h3>
+          <p>Con sala, cocina, baño y dos dormitorios propios, este departamento independiente recibe sol directo toda la tarde. Puede alojar a un familiar con total privacidad, convertirse en oficina o estudio, o generar un ingreso mensual extra por alquiler. Es, literalmente, una segunda posibilidad dentro de la misma propiedad — y pocas propiedades en la zona ofrecen esto.</p>
+        </div>
+        <div class="plus-visual">
+          <img src="img/d01_minidepto.jpg" alt="Entrada independiente del mini departamento" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="galeria">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Un recorrido por la casa</div>
@@ -459,8 +728,8 @@
     </div>
   </section>
 
-  <!-- VIDEO TOURS (Con ID "videos" para el botón superior) -->
-  <section class="videos" id="videos">
+  <!-- VIDEO TOURS -->
+  <section class="videos">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Video recorridos</div>
@@ -468,6 +737,54 @@
         <p>Cuatro recorridos cortos grabados ambiente por ambiente. Toca cualquiera para verlo con sonido.</p>
       </div>
       <div class="video-grid reveal-stagger reveal" id="videoGrid"></div>
+    </div>
+  </section>
+
+  <!-- JARDIN -->
+  <section class="jardin">
+    <div class="wrap">
+      <div class="jardin-grid reveal">
+        <div class="jardin-visual">
+          <img src="img/b01_patio.jpg" alt="Jardín con rosas y árboles frutales" loading="lazy">
+        </div>
+        <div class="jardin-text">
+          <div class="eyebrow">Para desconectar sin salir de casa</div>
+          <h2>Un jardín que cambia con las estaciones.</h2>
+          <p>Césped cuidado, rosales en flor y árboles frutales rodean la propiedad. Un espacio pensado para las tardes tranquilas, el café del domingo o simplemente para que los más pequeños tengan dónde correr.</p>
+          <p>El garaje techado y el entorno cercado completan la sensación de un barrio donde los vecinos se conocen y las calles se sienten seguras.</p>
+          <div class="jardin-tags">
+            <span>Árboles frutales</span>
+            <span>Garaje techado</span>
+            <span>Entorno cercado</span>
+            <span>Rosales todo el año</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FICHA TECNICA -->
+  <section class="ficha">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Los números, claros</div>
+        <h2>Toda la información, sin letra pequeña.</h2>
+      </div>
+      <div class="ficha-grid reveal">
+        <div class="ficha-table">
+          <div class="ficha-row"><span>Ubicación</span><span>Meseta de Achumani — Urb. Libertad, Zona Sur</span></div>
+          <div class="ficha-row"><span>Superficie de terreno</span><span>282 m²</span></div>
+          <div class="ficha-row"><span>Área construida</span><span>212 m²</span></div>
+          <div class="ficha-row"><span>Entorno</span><span>Residencial, seguro, alta plusvalía</span></div>
+          <div class="ficha-row"><span>Documentación</span><span>100% al día — lista para transferencia</span></div>
+          <div class="ficha-row"><span>Modalidad</span><span>Venta directa, sin intermediarios</span></div>
+        </div>
+        <div class="ficha-price">
+          <small>Precio de inversión</small>
+          <div class="amount">US$ 165.000</div>
+          <p>Trato directo con el propietario. Sin comisiones de intermediarios y con toda la documentación lista para una transferencia inmediata.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -482,11 +799,22 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
           Escribir ahora al 621 09656
         </a>
+        <div class="phone-note">WhatsApp / Llamadas — <b>621 09656</b> · Trato directo con el propietario</div>
       </div>
     </div>
   </section>
 
-  <!-- VIDEO MODAL (Contenedor que se abre al tocar un video) -->
+  <footer>
+    <div class="wrap">
+      Meseta de Achumani, Urbanización Libertad — Zona Sur, La Paz · <b>621 09656</b> · Venta directa, sin intermediarios
+    </div>
+  </footer>
+
+  <a class="floating-wa" id="floatingWa" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#181F2C"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
+  </a>
+
+  <!-- VIDEO MODAL -->
   <div class="video-modal" id="videoModal">
     <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
     <div class="video-modal-inner">
@@ -498,11 +826,7 @@
   </div>
 
 <script>
-  /* ==========================================
-     1. CONFIGURACIÓN DEL BOTÓN DE WHATSAPP
-     Esta función inyecta tu número y mensaje 
-     en todos los botones de la página.
-  ========================================== */
+  /* ============ WhatsApp ============ */
   const phone = "59162109656";
   const msg = encodeURIComponent("Hola, vi la publicación de la casa en Meseta de Achumani (Urb. Libertad) y me gustaría coordinar una visita.");
   const waLink = `https://wa.me/${phone}?text=${msg}`;
@@ -511,41 +835,39 @@
     if(el) el.href = waLink;
   });
 
-  /* ==========================================
-     2. EFECTOS DE APARICIÓN AL HACER SCROLL
-     Observa qué elementos con la clase "reveal" 
-     entran en la pantalla para hacerlos aparecer.
-  ========================================== */
+  /* ============ Nav scroll state ============ */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', ()=>{
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* ============ Reveal on scroll ============ */
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
         entry.target.classList.add('in-view');
-        io.unobserve(entry.target); // Deja de observar una vez que aparece
+        io.unobserve(entry.target);
       }
     });
   }, {threshold:0.15});
   revealEls.forEach(el=>io.observe(el));
 
-  /* ==========================================
-     3. LÓGICA DEL CARRUSEL DE IMÁGENES
-     Genera las imágenes dinámicamente y 
-     controla los botones de anterior/siguiente.
-  ========================================== */
+  /* ============ Galería de fotos (13 imágenes) ============ */
   const photos = [
-    { src:"img/a01_frontis.jpg", tag:"Fachada", caption:"Fachada principal: dos plantas, balcón privado y jardín delantero con agaves." },
-    { src:"img/a06_entorno_residencial.jpg", tag:"El entorno", caption:"La calle y, al fondo, las serranías que le dan a Achumani su carácter." },
-    { src:"img/b01_patio.jpg", tag:"Patio y jardín", caption:"Patio trasero con césped y rosales, con acceso directo a la parte posterior de la casa." },
-    { src:"img/b03_garaje.jpg", tag:"Garaje techado", caption:"Garaje cubierto con vista abierta a las serranías: espacio techado y seguro para el vehículo." },
-    { src:"img/b06_jardin _entrada.jpg", tag:"Sendero de entrada", caption:"El sendero de rosas que conecta el jardín con la puerta del departamento independiente." },
-    { src:"img/c02_interior.jpg", tag:"Sala principal", caption:"Sala amplia con chimenea de ladrillo, lista para las noches frías en familia." },
-    { src:"img/c03_interior.jpg", tag:"Sala — otro ángulo", caption:"Otra vista de la sala: luz natural entrando por los ventanales hacia el jardín." },
-    { src:"img/c04_interior.jpg", tag:"Acceso interior", caption:"La escalera de madera que conecta con la puerta principal de vitral." },
-    { src:"img/c05_habitacion02_piso1.jpg", tag:"Habitación · piso 1", caption:"Una de las habitaciones de planta alta, con piso de madera y vista a la ciudad." },
-    { src:"img/c6_habitacion01_piso1.jpg", tag:"Habitación · piso 1", caption:"La segunda habitación de planta alta, luminosa y con ventanas en esquina." },
-    { src:"img/c07_baño.jpg", tag:"Baño · planta alta", caption:"Baño completo de planta alta, con tina, lavamanos e inodoro." },
-    { src:"img/d01_minidepto.jpg", tag:"Mini departamento", caption:"La entrada independiente del mini departamento, rodeada de rosales." },
-    { src:"img/d06_cocina.jpg", tag:"Cocina · mini depto", caption:"La cocina del departamento independiente, funcional y con luz natural propia." },
+    { src:"img/a01_frontis.jpg", tag:"Fachada",              caption:"Fachada principal: dos plantas, balcón privado y jardín delantero con agaves." },
+    { src:"img/a06_entorno_residencial.jpg", tag:"El entorno",            caption:"La calle y, al fondo, las serranías que le dan a Achumani su carácter." },
+    { src:"img/b01_patio.jpg", tag:"Patio y jardín",        caption:"Patio trasero con césped y rosales, con acceso directo a la parte posterior de la casa." },
+    { src:"img/b03_garaje.jpg", tag:"Garaje techado",        caption:"Garaje cubierto con vista abierta a las serranías: espacio techado y seguro para el vehículo." },
+    { src:"img/b06_jardin _entrada.jpg", tag:"Sendero de entrada",    caption:"El sendero de rosas que conecta el jardín con la puerta del departamento independiente." },
+    { src:"img/c02_interior.jpg", tag:"Sala principal",        caption:"Sala amplia con chimenea de ladrillo, lista para las noches frías en familia." },
+    { src:"img/c03_interior.jpg", tag:"Sala — otro ángulo",    caption:"Otra vista de la sala: luz natural entrando por los ventanales hacia el jardín." },
+    { src:"img/c04_interior.jpg", tag:"Acceso interior",       caption:"La escalera de madera que conecta con la puerta principal de vitral." },
+    { src:"img/c05_habitacion02_piso1.jpg", tag:"Habitación · piso 1",   caption:"Una de las habitaciones de planta alta, con piso de madera y vista a la ciudad." },
+    { src:"img/c6_habitacion01_piso1.jpg", tag:"Habitación · piso 1",   caption:"La segunda habitación de planta alta, luminosa y con ventanas en esquina." },
+    { src:"img/c07_baño.jpg", tag:"Baño · planta alta",    caption:"Baño completo de planta alta, con tina, lavamanos e inodoro." },
+    { src:"img/d01_minidepto.jpg", tag:"Mini departamento",     caption:"La entrada independiente del mini departamento, rodeada de rosales." },
+    { src:"img/d06_cocina.jpg", tag:"Cocina · mini depto",   caption:"La cocina del departamento independiente, funcional y con luz natural propia." },
   ];
 
   const track = document.getElementById('carouselTrack');
@@ -553,11 +875,13 @@
   const thumbsWrap = document.getElementById('carouselThumbs');
   const counterEl = document.getElementById('carouselCounter');
 
-  // Inserta las fotos en el HTML
   photos.forEach((p)=>{
     const slide = document.createElement('div');
     slide.className = 'carousel-slide';
-    slide.innerHTML = `<img src="${p.src}" alt="${p.caption}" loading="lazy"><div class="carousel-caption"><b>${p.tag}</b>${p.caption}</div>`;
+    slide.innerHTML = `
+      <img src="${p.src}" alt="${p.caption}" loading="lazy">
+      <div class="carousel-caption"><b>${p.tag}</b>${p.caption}</div>
+    `;
     track.appendChild(slide);
 
     const dot = document.createElement('button');
@@ -575,16 +899,14 @@
   let autoplayTimer;
 
   function pad(n){ return String(n).padStart(2,'0'); }
-  
-  // Actualiza la foto visible
   function update(){
     track.style.transform = `translateX(-${index*100}%)`;
     dots.forEach((d,i)=>d.classList.toggle('active', i===index));
     thumbs.forEach((t,i)=>t.classList.toggle('active', i===index));
     counterEl.textContent = `${pad(index+1)} / ${pad(photos.length)}`;
-    // IMPORTANTE: Aquí se eliminó el scrollIntoView() que causaba el salto automático de página.
+    const activeThumb = thumbs[index];
+    if(activeThumb) activeThumb.scrollIntoView({block:'nearest', inline:'center', behavior:'smooth'});
   }
-
   function goTo(i){
     index = (i + photos.length) % photos.length;
     update();
@@ -594,10 +916,9 @@
   function prev(){ goTo(index-1); }
   function restartAutoplay(){
     clearInterval(autoplayTimer);
-    autoplayTimer = setInterval(next, 5500); // Cambia foto cada 5.5 segundos
+    autoplayTimer = setInterval(next, 5500);
   }
 
-  // Eventos de click para el carrusel
   dots.forEach((d,i)=>d.addEventListener('click', ()=>goTo(i)));
   thumbs.forEach((t,i)=>t.addEventListener('click', ()=>goTo(i)));
   document.getElementById('nextBtn').addEventListener('click', next);
@@ -605,14 +926,17 @@
   document.getElementById('carousel').addEventListener('mouseenter', ()=>clearInterval(autoplayTimer));
   document.getElementById('carousel').addEventListener('mouseleave', restartAutoplay);
 
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e=>{ touchStartX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', e=>{
+    const diff = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(diff) > 40){ diff > 0 ? prev() : next(); }
+  }, {passive:true});
+
   update();
   restartAutoplay();
 
-  /* ==========================================
-     4. LÓGICA DE VIDEOS (YOUTUBE API)
-     Carga la API oficial de YouTube para reproducir
-     videos con audio controlado sin salir de la página.
-  ========================================== */
+  /* ============ Video recorridos ============ */
   const videos = [
     { id:"Pf-TIv7gQok", tag:"Recorrido 1", title:"Calle, sala principal, cocina y patio-jardín" },
     { id:"MOhCBisPkss", tag:"Recorrido 2", title:"Jardín, cocina y sala con chimenea" },
@@ -625,16 +949,18 @@
     const card = document.createElement('button');
     card.className = 'video-card';
     card.setAttribute('type','button');
+    card.setAttribute('aria-label', `Reproducir video: ${v.title}`);
     card.innerHTML = `
       <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy">
       <div class="vc-overlay"></div>
       <div class="vc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
       <div class="vc-label"><b>${v.tag}</b><span>${v.title}</span></div>
     `;
-    card.addEventListener('click', ()=>openVideo(v.id)); // Abre el modal al hacer clic
+    card.addEventListener('click', ()=>openVideo(v.id));
     videoGrid.appendChild(card);
   });
 
+  /* ---- YouTube IFrame API + modal ---- */
   const videoModal = document.getElementById('videoModal');
   const videoModalFrame = document.getElementById('videoModalFrame');
   const videoModalLoading = document.getElementById('videoModalLoading');
@@ -646,7 +972,6 @@
   let ytPlayer = null;
   let playerNode = null;
 
-  // Inserta el script oficial de YouTube
   const ytScript = document.createElement('script');
   ytScript.src = "https://www.youtube.com/iframe_api";
   document.head.appendChild(ytScript);
@@ -655,7 +980,17 @@
     if(pendingVideoId) createPlayer(pendingVideoId);
   };
 
-  // Crea el reproductor y ajusta el volumen (Neuromarketing auditivo)
+  function detectAspectRatio(id, cb){
+    const img = new Image();
+    img.onload = ()=>{
+      if(img.naturalWidth && img.naturalHeight){
+        cb(img.naturalWidth / img.naturalHeight);
+      } else { cb(16/9); }
+    };
+    img.onerror = ()=>cb(16/9);
+    img.src = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+  }
+
   function createPlayer(id){
     if(ytPlayer){ try{ ytPlayer.destroy(); }catch(e){} ytPlayer = null; }
     playerNode = document.createElement('div');
@@ -665,7 +1000,7 @@
       playerVars:{ autoplay:1, rel:0, modestbranding:1, playsinline:1, controls:1 },
       events:{
         onReady:(e)=>{
-          e.target.setVolume(60); // Inicia con el volumen al 60% automáticamente
+          e.target.setVolume(60);   // volumen moderado (60%) al abrir el video
           e.target.playVideo();
           videoModalLoading.style.display = 'none';
         }
@@ -673,20 +1008,9 @@
     });
   }
 
-  // Detecta si es formato vertical u horizontal
-  function detectAspectRatio(id, cb){
-    const img = new Image();
-    img.onload = ()=>{
-      if(img.naturalWidth && img.naturalHeight){ cb(img.naturalWidth / img.naturalHeight); } 
-      else { cb(16/9); }
-    };
-    img.onerror = ()=>cb(16/9);
-    img.src = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
-  }
-
   function openVideo(id){
     videoModal.classList.add('open');
-    document.body.style.overflow = 'hidden'; // Evita que la página haga scroll de fondo
+    document.body.style.overflow = 'hidden';
     videoModalLoading.style.display = 'flex';
     videoModalFrame.style.setProperty('--ar', 16/9);
 
@@ -709,6 +1033,9 @@
 
   videoModalClose.addEventListener('click', closeVideo);
   videoModalBackdrop.addEventListener('click', closeVideo);
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && videoModal.classList.contains('open')) closeVideo();
+  });
 </script>
 </body>
 </html>
