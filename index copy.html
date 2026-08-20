@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa en Meseta de Achumani — Zona Sur, La Paz</title>
+<meta name="description" content="Residencia de 212 m² construidos en Urbanización Libertad, Meseta de Achumani. Jardín, departamento independiente y venta directa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noche:#181F2C;
+    --noche-2:#212B3B;
+    --noche-3:#2B3648;
+    --piedra:#A85D45;
+    --piedra-soft:#C97B60;
+    --sol:#E8A94A;
+    --sol-soft:#F2C879;
+    --musgo:#5C6B4B;
+    --hueso:#EDE6D8;
+    --hueso-2:#F7F3EA;
+    --tinta:#211C17;
+    --tinta-suave:#5B5348;
+    --max:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Work Sans', sans-serif;
+    color:var(--tinta);
+    background:var(--hueso-2);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; margin:0; letter-spacing:-0.01em;}
+  p{margin:0;}
+  a{text-decoration:none; color:inherit;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--piedra);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--piedra); display:block;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:20px 0;
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  .nav.scrolled{
+    background:rgba(24,31,44,0.92);
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+    padding:12px 0;
+    box-shadow:0 8px 24px rgba(0,0,0,0.18);
+  }
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between;}
+  .brand{
+    color:var(--hueso-2);
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:500;
+    display:flex; flex-direction:column; line-height:1.1;
+  }
+  .brand small{
+    font-family:'JetBrains Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.14em;
+    color:var(--sol-soft);
+    text-transform:uppercase;
+    margin-top:3px;
+  }
+  .nav-cta{
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:14px;
+    color:var(--noche);
+    background:var(--sol);
+    padding:11px 20px;
+    border-radius:100px;
+    display:flex; align-items:center; gap:8px;
+    transition:transform .25s ease, background .25s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--sol-soft); transform:translateY(-1px);}
+  .nav-cta svg{width:16px; height:16px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    background:#000;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:url('img/a01_frontis.jpg');
+    background-size:cover;
+    background-position:center 65%;
+    transform:scale(1.08);
+    animation:heroZoom 1.6s cubic-bezier(.2,.7,.3,1) forwards;
+  }
+  @keyframes heroZoom{ to{ transform:scale(1); } }
+  .hero-overlay{
+    position:absolute; inset:0;
+    background:
+      linear-gradient(180deg, rgba(10,12,18,0.55) 0%, rgba(10,12,18,0.35) 32%, rgba(10,12,18,0.72) 78%, rgba(10,12,18,0.92) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    width:100%;
+    padding:150px 0 76px;
+  }
+  .hero-content .wrap{max-width:760px; margin-left:auto; margin-right:auto; text-align:left;}
+  .hero .eyebrow{color:var(--sol-soft);}
+  .hero .eyebrow::before{background:var(--sol-soft);}
+  .hero h1{
+    color:var(--hueso-2);
+    font-size:clamp(34px, 5.6vw, 60px);
+    font-weight:500;
+    line-height:1.08;
+    opacity:0; transform:translateY(18px);
+    animation:riseIn .9s ease .25s forwards;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--sol-soft);
+    font-weight:500;
+  }
+  @keyframes riseIn{ to{opacity:1; transform:translateY(0);} }
+  .hero-sub{
+    color:rgba(237,230,216,0.86);
+    font-size:17px;
+    line-height:1.65;
+    max-width:560px;
+    margin-top:22px;
+    opacity:0; transform:translateY(14px);
+    animation:riseIn .9s ease .45s forwards;
+  }
+  .hero-row{
+    margin-top:38px;
+    display:flex; flex-wrap:wrap; align-items:center; gap:20px;
+    opacity:0; transform:translateY(14px);
+    animation:riseIn .9s ease .62s forwards;
+  }
+  .btn-primary{
+    background:var(--sol);
+    color:var(--noche);
+    font-weight:600;
+    font-size:15.5px;
+    padding:16px 26px;
+    border-radius:100px;
+    display:inline-flex; align-items:center; gap:11px;
+    box-shadow:0 10px 30px rgba(232,169,74,0.28);
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .btn-primary svg{width:19px; height:19px; flex-shrink:0;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(232,169,74,0.4); background:var(--sol-soft);}
+  .price-chip{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--hueso-2);
+    font-size:13.5px;
+    letter-spacing:0.03em;
+    border:1px solid rgba(237,230,216,0.35);
+    padding:11px 18px;
+    border-radius:100px;
+  }
+  .price-chip b{color:var(--sol-soft); font-weight:600;}
+  .scroll-cue{
+    position:absolute; right:32px; bottom:26px; z-index:2;
+    color:rgba(237,230,216,0.75);
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+  }
+  .scroll-cue .line{width:1px; height:34px; background:rgba(237,230,216,0.5); position:relative; overflow:hidden;}
+  .scroll-cue .line::after{
+    content:""; position:absolute; left:0; top:-100%; width:100%; height:100%;
+    background:var(--sol-soft);
+    animation:scrollLine 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollLine{ 50%{top:0;} 100%{top:100%;} }
+
+  /* sun arc signature */
+  .sun-arc{position:absolute; top:64px; left:0; right:0; z-index:2; display:flex; justify-content:center; pointer-events:none;}
+  .sun-arc svg{width:min(560px, 80vw); height:auto; overflow:visible;}
+  .sun-arc path{
+    fill:none; stroke:rgba(237,230,216,0.32); stroke-width:1.2; stroke-dasharray:2 6; stroke-linecap:round;
+  }
+  .sun-arc circle.sun-dot{
+    fill:var(--sol-soft);
+    filter:drop-shadow(0 0 10px rgba(242,200,121,0.8));
+  }
+  .sun-arc .track{
+    stroke-dasharray:340; stroke-dashoffset:340;
+    animation:drawArc 1.8s ease .4s forwards;
+  }
+  @keyframes drawArc{ to{stroke-dashoffset:0;} }
+
+  /* ---------- SECTIONS GENERIC ---------- */
+  section{padding:110px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head h2{
+    font-size:clamp(28px, 3.6vw, 42px);
+    font-weight:500;
+    line-height:1.15;
+    color:var(--noche);
+  }
+  .section-head p{
+    margin-top:16px;
+    font-size:16.5px;
+    line-height:1.7;
+    color:var(--tinta-suave);
+  }
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+  .reveal-stagger > *{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal-stagger.in-view > *{opacity:1; transform:translateY(0);}
+  .reveal-stagger.in-view > *:nth-child(1){transition-delay:.05s;}
+  .reveal-stagger.in-view > *:nth-child(2){transition-delay:.16s;}
+  .reveal-stagger.in-view > *:nth-child(3){transition-delay:.27s;}
+
+  /* ---------- BENEFITS ---------- */
+  .benefits{background:var(--hueso-2);}
+  .benefit-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;
+  }
+  .benefit-card{
+    background:#fff;
+    border:1px solid rgba(33,28,23,0.08);
+    border-radius:18px;
+    padding:34px 28px;
+  }
+  .benefit-icon{
+    width:46px; height:46px;
+    border-radius:12px;
+    background:var(--noche);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:22px;
+  }
+  .benefit-icon svg{width:24px; height:24px; stroke:var(--sol-soft);}
+  .benefit-card h3{font-size:19.5px; font-weight:500; color:var(--noche); margin-bottom:12px;}
+  .benefit-card p{font-size:15px; line-height:1.65; color:var(--tinta-suave);}
+
+  /* ---------- DISTRIBUCION ---------- */
+  .distribucion{background:var(--noche); color:var(--hueso-2);}
+  .distribucion .eyebrow{color:var(--sol-soft);}
+  .distribucion .eyebrow::before{background:var(--sol-soft);}
+  .distribucion .section-head h2{color:var(--hueso-2);}
+  .distribucion .section-head p{color:rgba(237,230,216,0.72);}
+  .floor-grid{display:grid; grid-template-columns:1fr 1fr; gap:0; border-radius:20px; overflow:hidden; border:1px solid rgba(237,230,216,0.14);}
+  .floor-card{padding:44px 40px; position:relative;}
+  .floor-card:first-child{background:var(--noche-2); border-right:1px solid rgba(237,230,216,0.14);}
+  .floor-card:last-child{background:var(--noche-3);}
+  .floor-tag{
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--piedra-soft); margin-bottom:16px; display:block;
+  }
+  .floor-card h3{font-size:24px; font-weight:500; margin-bottom:16px; color:var(--hueso-2);}
+  .floor-card ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;}
+  .floor-card li{
+    font-size:15px; line-height:1.55; color:rgba(237,230,216,0.82);
+    padding-left:20px; position:relative;
+  }
+  .floor-card li::before{
+    content:""; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:var(--sol-soft);
+  }
+
+  /* ---------- PLUS EXCLUSIVO ---------- */
+  .plus{background:var(--hueso-2); padding-top:0;}
+  .plus-inner{
+    background:linear-gradient(135deg, #fff 0%, var(--hueso) 100%);
+    border:1.5px solid var(--sol);
+    border-radius:26px;
+    padding:56px;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .plus-inner::before{
+    content:""; position:absolute; width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle, rgba(232,169,74,0.16), transparent 70%);
+    top:-120px; right:-120px;
+  }
+  .plus-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--noche); color:var(--sol-soft);
+    font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.14em; text-transform:uppercase;
+    padding:9px 16px; border-radius:100px; margin-bottom:22px;
+  }
+  .plus-text h3{font-size:clamp(24px, 3vw, 32px); font-weight:500; color:var(--noche); margin-bottom:18px; line-height:1.2;}
+  .plus-text p{font-size:16px; line-height:1.7; color:var(--tinta-suave);}
+  .plus-visual{
+    border-radius:18px; overflow:hidden; position:relative; z-index:1;
+    aspect-ratio:4/5;
+  }
+  .plus-visual img{width:100%; height:100%; object-fit:cover;}
+  .plus-visual::after{
+    content:"Independiente y con sol propio";
+    position:absolute; bottom:0; left:0; right:0;
+    background:linear-gradient(0deg, rgba(24,31,44,0.85), transparent);
+    color:#fff; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.04em;
+    padding:20px 18px 16px;
+  }
+
+  /* ---------- GALERIA / CAROUSEL ---------- */
+  .galeria{background:var(--hueso-2);}
+  .carousel{
+    position:relative;
+    border-radius:22px;
+    overflow:hidden;
+    background:var(--noche);
+    aspect-ratio:16/9;
+  }
+  .carousel-track{
+    display:flex; height:100%;
+    transition:transform .65s cubic-bezier(.6,.05,.2,1);
+  }
+  .carousel-slide{
+    min-width:100%; height:100%; position:relative;
+  }
+  .carousel-slide img{width:100%; height:100%; object-fit:cover;}
+  .carousel-caption{
+    position:absolute; left:0; right:0; bottom:0;
+    padding:28px 34px;
+    background:linear-gradient(0deg, rgba(10,12,18,0.82), transparent);
+    color:var(--hueso-2);
+    font-size:15px;
+    line-height:1.4;
+    max-width:640px;
+  }
+  .carousel-caption b{color:var(--sol-soft); font-weight:600; font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:8px;}
+  .carousel-arrow{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:46px; height:46px; border-radius:50%;
+    background:rgba(24,31,44,0.55);
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(237,230,216,0.3);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; z-index:3;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .carousel-arrow:hover{background:var(--sol); transform:translateY(-50%) scale(1.06);}
+  .carousel-arrow svg{width:18px; height:18px; stroke:var(--hueso-2);}
+  .carousel-arrow:hover svg{stroke:var(--noche);}
+  .carousel-arrow.prev{left:18px;}
+  .carousel-arrow.next{right:18px;}
+  .carousel-dots{
+    display:flex; justify-content:center; gap:10px; margin-top:22px;
+  }
+  .carousel-dots button{
+    width:9px; height:9px; border-radius:50%;
+    background:rgba(33,28,23,0.2);
+    border:none; cursor:pointer; padding:0;
+    transition:background .3s ease, width .3s ease;
+  }
+  .carousel-dots button.active{background:var(--piedra); width:26px; border-radius:6px;}
+
+  /* ---------- JARDIN ---------- */
+  .jardin{background:var(--hueso-2);}
+  .jardin-grid{display:grid; grid-template-columns:0.95fr 1.05fr; gap:56px; align-items:center;}
+  .jardin-visual{border-radius:20px; overflow:hidden; aspect-ratio:4/5;}
+  .jardin-visual img{width:100%; height:100%; object-fit:cover;}
+  .jardin-text h2{font-size:clamp(26px,3.2vw,36px); color:var(--noche); font-weight:500; margin-bottom:20px; line-height:1.18;}
+  .jardin-text p{font-size:16px; line-height:1.75; color:var(--tinta-suave); margin-bottom:16px;}
+  .jardin-tags{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
+  .jardin-tags span{
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.04em;
+    background:rgba(92,107,75,0.12); color:var(--musgo);
+    padding:8px 14px; border-radius:100px;
+  }
+
+  /* ---------- FICHA TECNICA ---------- */
+  .ficha{background:var(--noche); color:var(--hueso-2);}
+  .ficha .eyebrow{color:var(--sol-soft);} .ficha .eyebrow::before{background:var(--sol-soft);}
+  .ficha-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:0;
+    border:1px solid rgba(237,230,216,0.14); border-radius:22px; overflow:hidden;
+  }
+  .ficha-table{padding:44px 44px; background:var(--noche-2);}
+  .ficha-row{
+    display:flex; justify-content:space-between; gap:24px;
+    padding:18px 0; border-bottom:1px solid rgba(237,230,216,0.1);
+    font-family:'JetBrains Mono', monospace; font-size:14px;
+  }
+  .ficha-row:last-child{border-bottom:none;}
+  .ficha-row span:first-child{color:rgba(237,230,216,0.55); letter-spacing:0.03em;}
+  .ficha-row span:last-child{color:var(--hueso-2); text-align:right; font-weight:500;}
+  .ficha-price{
+    background:var(--noche-3);
+    padding:44px;
+    display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:18px;
+  }
+  .ficha-price small{font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--sol-soft);}
+  .ficha-price .amount{font-family:'Fraunces', serif; font-size:clamp(34px,4vw,48px); font-weight:500; color:var(--hueso-2);}
+  .ficha-price p{font-size:14.5px; color:rgba(237,230,216,0.72); line-height:1.6;}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background:linear-gradient(180deg, var(--hueso-2), var(--hueso));
+    text-align:center;
+    padding:120px 0 130px;
+  }
+  .cta-final .wrap{max-width:640px;}
+  .cta-final h2{font-size:clamp(28px,4vw,44px); color:var(--noche); font-weight:500; line-height:1.18; margin-bottom:20px;}
+  .cta-final p{font-size:16.5px; color:var(--tinta-suave); line-height:1.7; margin-bottom:38px;}
+  .btn-primary.large{padding:19px 34px; font-size:16.5px;}
+  .phone-note{
+    margin-top:22px; font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--tinta-suave); letter-spacing:0.02em;
+  }
+  .phone-note b{color:var(--piedra);}
+
+  footer{
+    background:var(--noche); color:rgba(237,230,216,0.55);
+    padding:34px 0; text-align:center; font-size:13px;
+  }
+  footer b{color:var(--sol-soft);}
+
+  /* floating whatsapp */
+  .floating-wa{
+    position:fixed; right:24px; bottom:24px; z-index:200;
+    width:60px; height:60px; border-radius:50%;
+    background:var(--sol);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 28px rgba(0,0,0,0.28);
+    animation:pulseWA 2.6s ease-in-out infinite;
+    transition:transform .25s ease;
+  }
+  .floating-wa:hover{transform:scale(1.08);}
+  .floating-wa svg{width:28px; height:28px;}
+  @keyframes pulseWA{
+    0%,100%{box-shadow:0 12px 28px rgba(0,0,0,0.28), 0 0 0 0 rgba(232,169,74,0.5);}
+    50%{box-shadow:0 12px 28px rgba(0,0,0,0.28), 0 0 0 12px rgba(232,169,74,0);}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .benefit-grid{grid-template-columns:1fr;}
+    .floor-grid{grid-template-columns:1fr;}
+    .floor-card:first-child{border-right:none; border-bottom:1px solid rgba(237,230,216,0.14);}
+    .plus-inner{grid-template-columns:1fr; padding:36px 26px;}
+    .plus-visual{order:-1; aspect-ratio:16/9;}
+    .jardin-grid{grid-template-columns:1fr;}
+    .jardin-visual{aspect-ratio:16/9;}
+    .ficha-grid{grid-template-columns:1fr;}
+    section{padding:76px 0;}
+    .wrap{padding:0 22px;}
+    .hero-content{padding-top:130px;}
+    .sun-arc{display:none;}
+  }
+  @media (max-width:520px){
+    .hero-row{flex-direction:column; align-items:flex-start;}
+    .carousel{aspect-ratio:4/5;}
+    .carousel-caption{padding:20px 20px;}
+  }
+
+
+  /* cards de los videos */
+  /* ---------- RECORRIDO VIRTUAL (VIDEOS) ---------- */
+  .videos-tours { background: var(--noche); padding-top: 60px; padding-bottom: 110px; }
+  .videos-tours .section-head h2 { color: var(--hueso-2); }
+  .videos-tours .eyebrow { color: var(--sol-soft); }
+  .videos-tours .eyebrow::before { background: var(--sol-soft); }
+  
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .video-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 16/9;
+    background: var(--noche-2);
+    border: 1px solid rgba(237,230,216,0.14);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .video-card.vertical { aspect-ratio: 9/16; } /* Para los Shorts */
+  .video-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+  .video-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: opacity 0.3s ease; }
+  .video-card:hover img { opacity: 0.4; }
+  
+  .play-btn {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 60px; height: 60px; border-radius: 50%;
+    background: var(--sol); color: var(--noche);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 15px rgba(232,169,74,0.4);
+    transition: transform 0.3s ease;
+  }
+  .video-card:hover .play-btn { transform: translate(-50%, -50%) scale(1.1); }
+  .play-btn svg { width: 24px; height: 24px; margin-left: 4px; }
+  
+  .video-title {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 20px 16px 12px;
+    background: linear-gradient(0deg, rgba(24,31,44,0.95), transparent);
+    color: var(--hueso-2); font-size: 15px; font-weight: 500;
+  }
+
+  /* MODAL DE VIDEO */
+  .video-modal {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(10,12,18,0.95);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.4s ease;
+    padding: 20px;
+  }
+  .video-modal.active { opacity: 1; pointer-events: all; }
+  .modal-close {
+    position: absolute; top: 24px; right: 24px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: none;
+    color: #fff; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.3s;
+  }
+  .modal-close:hover { background: var(--sol); color: var(--noche); }
+  .modal-content {
+    width: 100%; max-width: 900px;
+    aspect-ratio: 16/9; background: #000;
+    border-radius: 12px; overflow: hidden;
+    position: relative;
+  }
+  .modal-content.is-vertical { max-width: 400px; aspect-ratio: 9/16; }
+  .modal-content iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+</style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="wrap">
+      <span class="brand">Urb. Libertad<small>Meseta de Achumani · Zona Sur</small></span>
+      <a class="nav-cta" id="navCta" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="sun-arc" aria-hidden="true">
+      <svg viewBox="0 0 400 120">
+        <path class="track" d="M10,110 Q200,-30 390,110"/>
+        <circle class="sun-dot" r="5">
+          <animateMotion dur="6s" repeatCount="indefinite" path="M10,110 Q200,-30 390,110"/>
+        </circle>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="wrap">
+        <div class="eyebrow">Meseta de Achumani · Urb. Libertad · Zona Sur, La Paz</div>
+        <h1>Aquí el sol entra primero<br>y no se va hasta <em>el atardecer.</em></h1>
+        <p class="hero-sub">Una residencia de 212 m² construidos sobre 282 m² de terreno, con jardín de árboles frutales y un departamento independiente que puede pagarse solo. Trato directo con el propietario, papeles al día.</p>
+        <div class="hero-row">
+          <a class="btn-primary" id="heroCta" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
+            Coordinar visita por WhatsApp
+          </a>
+          <span class="price-chip">US$ <b>165.000</b> · venta directa</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-cue"><span>Recorrer</span><span class="line"></span></div>
+  </header>
+
+  <!-- BENEFICIOS -->
+  <section class="benefits">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Por qué se siente distinta</div>
+        <h2>No es solo una casa con buena luz. Es una casa que trabaja a tu favor.</h2>
+        <p>Tres razones que explican por qué las propiedades de esta zona no suelen quedarse mucho tiempo disponibles.</p>
+      </div>
+      <div class="benefit-grid reveal-stagger reveal">
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+          </div>
+          <h3>Sol de sobra, todo el año</h3>
+          <p>La orientación de la casa deja entrar luz natural durante todas las estaciones. Ambientes cálidos, menos gasto en calefacción y más ganas de quedarse en casa.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/></svg>
+          </div>
+          <h3>Espacio para vivir, no solo para caber</h3>
+          <p>212 m² construidos en dos plantas, más un departamento independiente. Sala con chimenea, dormitorios amplios y un balcón con vista propia.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.4 8.4-7 10-3.6-1.6-7-5-7-10V6l7-3z"/></svg>
+          </div>
+          <h3>Una zona que sigue subiendo de valor</h3>
+          <p>Achumani es una de las zonas residenciales más consolidadas de La Paz: calles seguras, entorno tranquilo y una proyección de plusvalía sólida.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISTRIBUCION -->
+  <section class="distribucion">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Cómo se vive esta casa</div>
+        <h2>Dos plantas pensadas para las distintas horas del día.</h2>
+        <p>De la sala con chimenea en la planta baja al balcón con vista en la planta alta: cada nivel tiene su propio momento.</p>
+      </div>
+      <div class="floor-grid reveal">
+        <div class="floor-card">
+          <span class="floor-tag">Planta baja</span>
+          <h3>Para reunirse</h3>
+          <ul>
+            <li>Sala amplia con chimenea de ladrillo, ideal para las tardes largas en familia.</li>
+            <li>Cocina funcional, lista para el día a día.</li>
+            <li>Dos dormitorios y un baño completo.</li>
+          </ul>
+        </div>
+        <div class="floor-card">
+          <span class="floor-tag">Planta alta</span>
+          <h3>Para descansar</h3>
+          <ul>
+            <li>Dos habitaciones llenas de luz natural.</li>
+            <li>La principal se abre a un balcón privado con vista a las serranías de Achumani.</li>
+            <li>Un segundo baño completo, independiente del de planta baja.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLUS EXCLUSIVO -->
+  <section class="plus">
+    <div class="wrap">
+      <div class="plus-inner reveal">
+        <div class="plus-text">
+          <span class="plus-badge">Plus exclusivo</span>
+          <h3>Una casa dentro de la casa.</h3>
+          <p>Con sala, cocina, baño y dos dormitorios propios, este departamento independiente recibe sol directo toda la tarde. Puede alojar a un familiar con total privacidad, convertirse en oficina o estudio, o generar un ingreso mensual extra por alquiler. Es, literalmente, una segunda posibilidad dentro de la misma propiedad — y pocas propiedades en la zona ofrecen esto.</p>
+        </div>
+        <div class="plus-visual">
+          <img src="img/d01_minidepto.jpg" alt="Acceso independiente al departamento y jardín lateral" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section class="galeria">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Un recorrido por la casa</div>
+        <h2>Antes de visitarla, empieza a conocerla.</h2>
+      </div>
+
+      <div class="carousel reveal" id="carousel">
+        <!-- <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide">
+            <img src="img/a01.jpg" alt="Fachada principal de la casa" loading="lazy">
+            <div class="carousel-caption"><b>Fachada principal</b>Dos plantas, balcón privado y jardín delantero con agaves.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/interior.jpg" alt="Sala principal con chimenea de ladrillo" loading="lazy">
+            <div class="carousel-caption"><b>Sala principal</b>Amplia, luminosa y con chimenea de ladrillo lista para las noches frías.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/b01.jpg" alt="Acceso lateral hacia el jardín" loading="lazy">
+            <div class="carousel-caption"><b>Acceso lateral</b>El camino que conecta el jardín con el departamento independiente.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/b06.jpg" alt="Sendero de rosas en el jardín" loading="lazy">
+            <div class="carousel-caption"><b>Jardín en flor</b>Rosales que acompañan el camino hasta la puerta del fondo.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="img/a06.jpg" alt="Calle y serranías de Achumani" loading="lazy">
+            <div class="carousel-caption"><b>El entorno</b>La calle y, al fondo, las serranías que le dan a Achumani su carácter.</div>
+          </div>
+        </div> -->
+        <div class="carousel-track" id="carouselTrack">
+          <!-- 1. Fachada -->
+          <div class="carousel-slide">
+            <img src="img/a01_frontis.jpg" alt="Fachada principal de la casa" loading="lazy">
+            <div class="carousel-caption"><b>Fachada y Exteriores</b>Arquitectura sólida de dos plantas, balcón privado y un diseño pensado para aprovechar el sol.</div>
+          </div>
+          <!-- 2. Sala Principal -->
+          <div class="carousel-slide">
+            <img src="img/c02_interior.jpg" alt="Sala principal con chimenea" loading="lazy">
+            <div class="carousel-caption"><b>El Corazón del Hogar</b>Sala principal amplia y luminosa, coronada por una hermosa chimenea de ladrillo.</div>
+          </div>
+          <!-- 3. Perspectiva Sala -->
+          <div class="carousel-slide">
+            <img src="img/c03_interior.jpg" alt="Perspectiva de la sala y luz natural" loading="lazy">
+            <div class="carousel-caption"><b>Luz Natural</b>El diseño de los ventanales permite que el sol bañe los interiores durante gran parte del día.</div>
+          </div>
+          <!-- 4. Distribución Interior -->
+          <div class="carousel-slide">
+            <img src="img/c04_interior.jpg" alt="Gradas y hall de distribución" loading="lazy">
+            <div class="carousel-caption"><b>Distribución Fluida</b>Detalles clásicos en madera y bloques de vidrio que distribuyen la luz hacia la planta alta.</div>
+          </div>
+          <!-- 5. Cocina -->
+          <div class="carousel-slide">
+            <img src="img/d06_cocina.jpg" alt="Cocina iluminada" loading="lazy">
+            <div class="carousel-caption"><b>Cocina Funcional</b>Espacio práctico, ventilado y con luz directa, listo para el día a día de la familia.</div>
+          </div>
+          <!-- 6. Jardín Entrada -->
+          <div class="carousel-slide">
+            <img src="img/b06_jardin _entrada.jpg" alt="Jardín de entrada con rosales" loading="lazy">
+            <div class="carousel-caption"><b>Bienvenida Natural</b>Un pasillo verde adornado con rosales te recibe cada vez que llegas a casa.</div>
+          </div>
+          <!-- 7. Patio Trasero / Jardín -->
+          <div class="carousel-slide">
+            <img src="img/b01_patio.jpg" alt="Patio trasero y conexión al departamento" loading="lazy">
+            <div class="carousel-caption"><b>Espacio de Desconexión</b>Un jardín privado con árboles que conecta de forma armónica con el departamento independiente.</div>
+          </div>
+          <!-- 8. Garaje -->
+          <div class="carousel-slide">
+            <img src="img/b03_garaje.jpg" alt="Garaje techado" loading="lazy">
+            <div class="carousel-caption"><b>Comodidad y Seguridad</b>Garaje privado con estructura techada, integrado perfectamente al ingreso del terreno.</div>
+          </div>
+          <!-- 9. Entorno -->
+          <div class="carousel-slide">
+            <img src="img/a06_entorno_residencial.jpg" alt="Entorno residencial de Achumani" loading="lazy">
+            <div class="carousel-caption"><b>El Entorno</b>Calles tranquilas, seguras y la imponente vista a las serranías que caracterizan a Achumani.</div>
+          </div>
+        </div>
+        <div class="carousel-arrow prev" id="prevBtn" role="button" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </div>
+        <div class="carousel-arrow next" id="nextBtn" role="button" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+      </div>
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <!-- RECORRIDOS VIRTUALES (VIDEOS) -->
+  <section class="videos-tours">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Experiencia Inmersiva</div>
+        <h2>Camina por la casa, a tu ritmo.</h2>
+        <p>Selecciona un recorrido para explorar cada detalle antes de tu visita presencial.</p>
+      </div>
+
+      <div class="video-grid reveal">
+        
+        <!-- VIDEO 1: Vertical (Short) -->
+        <div class="video-card vertical" data-video="https://www.youtube.com/embed/Pf-TIv7gQok?autoplay=1&mute=1" data-vertical="true">
+          <img src="img/a01_frontis.jpg" alt="Video fachada" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-title">1. El Primer Vistazo (Fachada a Patio)</div>
+        </div>
+
+        <!-- VIDEO 2: Vertical (Short) -->
+        <div class="video-card vertical" data-video="https://www.youtube.com/embed/MOhCBisPkss?autoplay=1&mute=1" data-vertical="true">
+          <img src="img/c02_interior.jpg" alt="Video interiores" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-title">2. El Corazón del Hogar (Jardín a Chimenea)</div>
+        </div>
+
+        <!-- VIDEO 3: Horizontal -->
+        <!-- CORREGIDO: Se añadió www.youtube.com -->
+        <div class="video-card" data-video="https://www.youtube.com/embed/qIrhF_pfG6w?autoplay=1&mute=1" data-vertical="false">
+          <img src="img/c04_interior.jpg" alt="Video planta alta" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-title">3. Zona de Descanso (Planta Alta)</div>
+        </div>
+
+        <!-- VIDEO 4: Horizontal -->
+        <!-- CORREGIDO: Se añadió www.youtube.com -->
+        <div class="video-card" data-video="https://www.youtube.com/embed/UhZKEd928w4?autoplay=1&mute=1" data-vertical="false">
+          <img src="img/b01_patio.jpg" alt="Video departamento" loading="lazy">
+          <div class="play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="video-title">4. Plus de Inversión (Mini-departamento)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL FLOTANTE OCULTO PARA LOS VIDEOS -->
+  <!-- <div class="video-modal" id="videoModal">
+    <button class="modal-close" id="closeModal" aria-label="Cerrar video">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-content" id="modalContent">
+      <iframe id="videoIframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div> -->
+  
+  <!-- MODAL FLOTANTE OCULTO PARA LOS VIDEOS -->
+  <div class="video-modal" id="videoModal">
+    <button class="modal-close" id="closeModal" aria-label="Cerrar video">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-content" id="modalContent">
+      <!-- Iframe reforzado con políticas de origen y permisos extendidos -->
+      <iframe id="videoIframe" src="" title="Recorrido Virtual Inmobiliario" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- JARDIN -->
+  <section class="jardin">
+    <div class="wrap">
+      <div class="jardin-grid reveal">
+        <div class="jardin-visual">
+          <img src="img/b06.jpg" alt="Jardín con rosas y árboles frutales" loading="lazy">
+        </div>
+        <div class="jardin-text">
+          <div class="eyebrow">Para desconectar sin salir de casa</div>
+          <h2>Un jardín que cambia con las estaciones.</h2>
+          <p>Césped cuidado, rosales en flor y árboles frutales rodean la propiedad. Un espacio pensado para las tardes tranquilas, el café del domingo o simplemente para que los más pequeños tengan dónde correr.</p>
+          <p>El garaje privado y el entorno cercado completan la sensación de un barrio donde los vecinos se conocen y las calles se sienten seguras.</p>
+          <div class="jardin-tags">
+            <span>Árboles frutales</span>
+            <span>Garaje privado</span>
+            <span>Entorno cercado</span>
+            <span>Rosales todo el año</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <iframe width="1689" height="652" src="https://www.youtube.com/embed/qIrhF_pfG6w" title="Casa Meseta de Achumani - planta alta" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <!-- FICHA TECNICA -->
+  <section class="ficha">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Los números, claros</div>
+        <h2>Toda la información, sin letra pequeña.</h2>
+      </div>
+      <div class="ficha-grid reveal">
+        <div class="ficha-table">
+          <div class="ficha-row"><span>Ubicación</span><span>Meseta de Achumani — Urb. Libertad, Zona Sur</span></div>
+          <div class="ficha-row"><span>Superficie de terreno</span><span>282 m²</span></div>
+          <div class="ficha-row"><span>Área construida</span><span>212 m²</span></div>
+          <div class="ficha-row"><span>Entorno</span><span>Residencial, seguro, alta plusvalía</span></div>
+          <div class="ficha-row"><span>Documentación</span><span>100% al día — lista para transferencia</span></div>
+          <div class="ficha-row"><span>Modalidad</span><span>Venta directa, sin intermediarios</span></div>
+        </div>
+        <div class="ficha-price">
+          <small>Precio de inversión</small>
+          <div class="amount">US$ 165.000</div>
+          <p>Trato directo con el propietario. Sin comisiones de intermediarios y con toda la documentación lista para una transferencia inmediata.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="wrap">
+      <div class="reveal">
+        <div class="eyebrow" style="justify-content:center;">Última llamada</div>
+        <h2>Las casas con esta luz, este jardín y esta independencia no suelen esperar.</h2>
+        <p>Coordina hoy una visita privada y directa con el propietario. Sin filas de intermediarios, sin vueltas: solo tú, la casa y una conversación por WhatsApp.</p>
+        <a class="btn-primary large" id="finalCta" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
+          Escribir ahora al 621 09656
+        </a>
+        <div class="phone-note">WhatsApp / Llamadas — <b>621 09656</b> · Trato directo con el propietario</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      Meseta de Achumani, Urbanización Libertad — Zona Sur, La Paz · <b>621 09656</b> · Venta directa, sin intermediarios
+    </div>
+  </footer>
+
+  <a class="floating-wa" id="floatingWa" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="#181F2C"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
+  </a>
+
+<script>
+  // WhatsApp link setup
+  const phone = "59162109656";
+  const msg = encodeURIComponent("Hola, vi la publicación de la casa en Meseta de Achumani (Urb. Libertad) y me gustaría coordinar una visita.");
+  const waLink = `https://wa.me/${phone}?text=${msg}`;
+  ["navCta","heroCta","finalCta","floatingWa"].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.href = waLink;
+  });
+
+  // Nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', ()=>{
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Carousel
+  const track = document.getElementById('carouselTrack');
+  const slides = Array.from(track.children);
+  const dotsWrap = document.getElementById('carouselDots');
+  let index = 0;
+  let autoplayTimer;
+
+  slides.forEach((_, i)=>{
+    const dot = document.createElement('button');
+    if(i===0) dot.classList.add('active');
+    dot.addEventListener('click', ()=>goTo(i));
+    dotsWrap.appendChild(dot);
+  });
+  const dots = Array.from(dotsWrap.children);
+
+  function update(){
+    track.style.transform = `translateX(-${index*100}%)`;
+    dots.forEach((d,i)=>d.classList.toggle('active', i===index));
+  }
+  function goTo(i){
+    index = (i + slides.length) % slides.length;
+    update();
+    restartAutoplay();
+  }
+  function next(){ goTo(index+1); }
+  function prev(){ goTo(index-1); }
+  function restartAutoplay(){
+    clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(next, 5500);
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', next);
+  document.getElementById('prevBtn').addEventListener('click', prev);
+  document.getElementById('carousel').addEventListener('mouseenter', ()=>clearInterval(autoplayTimer));
+  document.getElementById('carousel').addEventListener('mouseleave', restartAutoplay);
+
+  // swipe support
+  let touchStartX = 0;
+  track.addEventListener('touchstart', e=>{ touchStartX = e.touches[0].clientX; }, {passive:true});
+  track.addEventListener('touchend', e=>{
+    const diff = e.changedTouches[0].clientX - touchStartX;
+    if(Math.abs(diff) > 40){ diff > 0 ? prev() : next(); }
+  }, {passive:true});
+
+  update();
+  restartAutoplay();
+
+  // JS PARA LAS CARDS DE VIDEO
+  // Lógica para el Reproductor Modal de Videos
+  const videoCards = document.querySelectorAll('.video-card');
+  const videoModal = document.getElementById('videoModal');
+  const closeModal = document.getElementById('closeModal');
+  const videoIframe = document.getElementById('videoIframe');
+  const modalContent = document.getElementById('modalContent');
+
+  videoCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const videoUrl = card.getAttribute('data-video');
+      const isVertical = card.getAttribute('data-vertical') === 'true';
+      
+      // Adaptar el modal si es formato Short (Vertical)
+      if(isVertical) {
+        modalContent.classList.add('is-vertical');
+      } else {
+        modalContent.classList.remove('is-vertical');
+      }
+
+      videoIframe.src = videoUrl; // Carga el video
+      videoModal.classList.add('active'); // Muestra la pantalla negra
+    });
+  });
+
+  // Cerrar modal
+  const closeVideo = () => {
+    videoModal.classList.remove('active');
+    setTimeout(() => { videoIframe.src = ''; }, 400); // Detiene el audio
+  };
+
+  closeModal.addEventListener('click', closeVideo);
+  
+  // Cerrar al hacer clic fuera del video
+  videoModal.addEventListener('click', (e) => {
+    if(e.target === videoModal) closeVideo();
+  });
+</script>
+</body>
+</html>

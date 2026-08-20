@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residencia Exclusiva en Achumani | Urbanización Libertad</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1A365D;
+            --primary-dark: #0F203C;
+            --accent: #D69E2E;
+            --accent-hover: #B7791F;
+            --text-dark: #2D3748;
+            --text-light: #718096;
+            --bg-light: #F7FAFC;
+            --white: #FFFFFF;
+            --whatsapp: #25D366;
+            --whatsapp-dark: #1EBE5D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(26, 54, 93, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .nav-brand {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-brand span {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--whatsapp);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .nav-cta:hover {
+            background: var(--whatsapp-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section with AIDA - Attention */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.85)), url('selects/a01_frontis.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            z-index: 2;
+        }
+
+        .badge-exclusive {
+            background: rgba(214, 158, 46, 0.2);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            margin-bottom: 2.5rem;
+            color: #E2E8F0;
+            font-weight: 300;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(214, 158, 46, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(214, 158, 46, 0.6);
+        }
+
+        .btn-whatsapp-hero {
+            background: var(--whatsapp);
+            color: var(--white);
+            padding: 1rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp-hero:hover {
+            background: var(--whatsapp-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--white);
+            padding: 2.5rem 5%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+            border-radius: 16px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .section-title span {
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* AIDA - Interest & Desire (Features Grid) */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent);
+            position: relative;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            width: 65px;
+            height: 65px;
+            background: rgba(26, 54, 93, 0.08);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.35rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        /* Detailed Spaces Section */
+        .spaces-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .spaces-container {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        .space-box {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--primary);
+        }
+
+        .space-box h3 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .space-list {
+            list-style: none;
+        }
+
+        .space-list li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: var(--text-dark);
+            font-size: 1.05rem;
+        }
+
+        .space-list li i {
+            color: var(--accent);
+            margin-top: 5px;
+        }
+
+        /* Photo Carousel Section */
+        .carousel-section {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 6rem 5%;
+            text-align: center;
+        }
+
+        .carousel-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .carousel-slide {
+            display: none;
+            position: relative;
+            height: 550px;
+        }
+
+        .carousel-slide.active {
+            display: block;
+            animation: fadeIn 0.8s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            padding: 2.5rem 2rem 1.5rem 2rem;
+            text-align: left;
+        }
+
+        .carousel-caption h3 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 0.3rem;
+        }
+
+        .carousel-caption p {
+            color: #CBD5E0;
+            font-size: 1rem;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            color: var(--white);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .carousel-btn:hover {
+            background: var(--accent);
+            color: var(--primary-dark);
+        }
+
+        .carousel-btn.prev { left: 20px; }
+        .carousel-btn.next { right: 20px; }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+
+        /* Financial & Technical Specs */
+        .specs-section {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .specs-card {
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            overflow: hidden;
+        }
+
+        @media (max-width: 900px) {
+            .specs-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .specs-content {
+            padding: 4rem;
+        }
+
+        .specs-content h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .spec-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 3px;
+        }
+
+        .spec-item div span {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .spec-item div strong {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+
+        .investment-box {
+            background: var(--primary);
+            color: var(--white);
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .investment-box span {
+            color: var(--accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-note {
+            font-size: 0.95rem;
+            color: #CBD5E0;
+            margin-bottom: 2.5rem;
+        }
+
+        /* AIDA - Action (CTA Section) */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-container h2 {
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-container p {
+            font-size: 1.2rem;
+            color: #CBD5E0;
+            margin-bottom: 2.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #0B1729;
+            color: #A0AEC0;
+            padding: 3rem 5%;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--whatsapp);
+            color: var(--white);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            background: var(--whatsapp-dark);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fa-solid fa-house-chimney" style="color: var(--accent);"></i>
+            Urbanización <span>Libertad</span>
+        </div>
+        <a href="https://wa.me/59162109656?text=Hola,%20estoy%20interesado%20en%20la%20propiedad%20en%20Achumani.%20Me%20gustaría%20coordinar%20una%20visita%20privada." class="nav-cta" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> Visita Privada
+        </a>
+    </nav>
+
+    <!-- Hero Section (AIDA: Attention) -->
+    <header class="hero">
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <span class="badge-exclusive"><i class="fa-solid fa-star"></i> Zona Sur • La Paz</span>
+            <h1>EL HOGAR ILUMINADO Y LA INVERSIÓN QUE BUSCABAS EN LA <span>ZONA SUR</span></h1>
+            <p>Despierta cada mañana con luz natural llenando tu espacio, disfruta de un amplio jardín con árboles frutales y experimenta la máxima tranquilidad en la Meseta de Achumani.</p>
+            <div class="hero-buttons">
+                <a href="https://wa.me/59162109656?text=Hola,%20quiero%20coordinar%20una%20visita%20privada%20para%20la%20casa%20en%20Achumani." class="btn-whatsapp-hero" target="_blank">
+                    <i class="fa-brands fa-whatsapp fa-lg"></i> Contactar por WhatsApp
+                </a>
+                <a href="#detalles" class="btn-primary">
+                    <i class="fa-solid fa-compass"></i> Conocer Propiedad
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar" data-aos="fade-up" data-aos-duration="800">
+        <div class="stat-item">
+            <h3>282 m²</h3>
+            <p>Superficie de Terreno</p>
+        </div>
+        <div class="stat-item">
+            <h3>212 m²</h3>
+            <p>Área Construida</p>
+        </div>
+        <div class="stat-item">
+            <h3>Sol Todo el Día</h3>
+            <p>Orientación Privilegiada</p>
+        </div>
+        <div class="stat-item">
+            <h3>$us 165.000</h3>
+            <p>Trato Directo sin Intermediarios</p>
+        </div>
+    </div>
+
+    <!-- AIDA: Interest - Why Unique -->
+    <section id="detalles">
+        <div class="section-title" data-aos="fade-up">
+            <span>Diferenciadores Exclusivos</span>
+            <h2>Lo que hace única a esta residencia</h2>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-sun"></i>
+                </div>
+                <h3>Sol todo el día</h3>
+                <p>Disfruta de ambientes cálidos y templados durante todas las estaciones, reduciendo el consumo de calefacción y mejorando el bienestar de tu familia.</p>
+            </div>
+
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-building-shield"></i>
+                </div>
+                <h3>Plus Exclusivo: Mini Departamento</h3>
+                <p>Independiente con sala, cocina, baño y 2 dormitorios con sol de tarde. Ideal para invitados, oficina privada o generar ingresos extra por alquiler.</p>
+            </div>
+
+            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <h3>Espacios Exteriores</h3>
+                <p>Hermoso jardín privado con árboles frutales para disfrutar tardes de tranquilidad, acompañado de garaje privado y un entorno seguro.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Layout Spaces -->
+    <section style="background: var(--white);">
+        <div class="section-title" data-aos="fade-up">
+            <span>Distribución Inteligente</span>
+            <h2>Casa Principal Espaciosa & Acogedora</h2>
+        </div>
+
+        <div class="spaces-container">
+            <div class="space-box" data-aos="fade-right">
+                <h3><i class="fa-solid fa-couch"></i> Planta Baja</h3>
+                <ul class="space-list">
+                    <li><i class="fa-solid fa-circle-check"></i> Sala amplia con chimenea, ideal para compartir momentos inolvidables en familia.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Cocina funcional con excelente iluminación y ventilación.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> 2 dormitorios cómodos y bien distribuidos.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Baño completo de uso general.</li>
+                </ul>
+            </div>
+
+            <div class="space-box" data-aos="fade-left" style="border-left-color: var(--accent);">
+                <h3><i class="fa-solid fa-stairs"></i> Planta Alta</h3>
+                <ul class="space-list">
+                    <li><i class="fa-solid fa-circle-check"></i> 2 habitaciones llenas de luz natural y vistas despejadas.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Habitación principal con balcón privado y vista privilegiada.</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Baño completo adicional de gran categoría.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- AIDA: Desire - Photo Carousel -->
+    <section class="carousel-section">
+        <div class="section-title" data-aos="fade-up" style="color: var(--white);">
+            <span style="color: var(--accent);">Galería Fotográfica</span>
+            <h2 style="color: var(--white);">Recorre cada rincón de tu próximo hogar</h2>
+        </div>
+
+        <div class="carousel-container" data-aos="zoom-in">
+            <!-- Slide 1: Frontis -->
+            <div class="carousel-slide active">
+                <img src="selects/a01_frontis.png" alt="Fachada de la Residencia">
+                <div class="carousel-caption">
+                    <h3>Fachada Principal y Orientación Solar</h3>
+                    <p>Urbanización Libertad, Meseta de Achumani (Zona Sur)</p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Garden -->
+            <div class="carousel-slide">
+                <img src="selects/b02.png" alt="Jardín con Árboles Frutales">
+                <div class="carousel-caption">
+                    <h3>Jardín Privado con Árboles Frutales</h3>
+                    <p>Espacios verdes para desconectar y disfrutar en familia</p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Street / Surroundings -->
+            <div class="carousel-slide">
+                <img src="selects/a06.jpg" alt="Entorno Residencial">
+                <div class="carousel-caption">
+                    <h3>Entorno Residencial Seguro</h3>
+                    <p>Zona tranquila, arbolada y de alta plusvalía en La Paz</p>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-btn prev" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="carousel-btn next" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <div class="carousel-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </section>
+
+    <!-- Technical Specs & Financial Opportunity -->
+    <section style="background: var(--bg-light);">
+        <div class="specs-section">
+            <div class="specs-card" data-aos="fade-up">
+                <div class="specs-content">
+                    <h2>Ficha Técnica & Oportunidad</h2>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>
+                                <span>Ubicación</span>
+                                <strong>Meseta de Achumani (Zona Sur)</strong>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fa-solid fa-ruler-combined"></i>
+                            <div>
+                                <span>Terreno</span>
+                                <strong>282 m²</strong>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fa-solid fa-house"></i>
+                            <div>
+                                <span>Construcción</span>
+                                <strong>212 m²</strong>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fa-solid fa-file-shield"></i>
+                            <div>
+                                <span>Documentación</span>
+                                <strong>100% al día (Folio real)</strong>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fa-solid fa-handshake"></i>
+                            <div>
+                                <span>Trato</span>
+                                <strong>Directo con Propietario</strong>
+                            </div>
+                        </div>
+                        <div class="spec-item">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <div>
+                                <span>Seguridad</span>
+                                <strong>Zona Residencial Tranquila</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-light); font-size: 0.95rem;">
+                        <i class="fa-solid fa-triangle-exclamation" style="color: var(--accent);"></i> Las propiedades con esta orientación solar, amplitud y versatilidad en la Zona Sur no permanecen mucho tiempo en el mercado.
+                    </p>
+                </div>
+
+                <div class="investment-box">
+                    <span>Precio de Inversión</span>
+                    <div class="price">$us 165.000</div>
+                    <div class="price-note">Ahorro real sin comisiones de intermediarios</div>
+                    <a href="https://wa.me/59162109656?text=Hola,%20estoy%20interesado%20en%20la%20propiedad%20de%20$us%20165.000%20en%20Achumani.%20Quiero%20visitarla." class="btn-primary" style="justify-content: center; width: 100%;" target="_blank">
+                        <i class="fa-brands fa-whatsapp"></i> Agendar Visita Directa
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AIDA: Action (Final CTA) -->
+    <section class="cta-section">
+        <div class="cta-container" data-aos="zoom-in">
+            <h2>¿Listo para conocer tu próximo hogar?</h2>
+            <p>Coordina una visita privada directamente con el propietario hoy mismo y asegura esta excelente oportunidad inmobiliaria en la Zona Sur.</p>
+            <a href="https://wa.me/59162109656?text=Hola,%20estoy%20listo%20para%20coordinar%20una%20visita%20privada%20a%20la%20propiedad%20en%20Achumani." class="btn-whatsapp-hero" style="font-size: 1.15rem; padding: 1.2rem 2.8rem;" target="_blank">
+                <i class="fa-brands fa-whatsapp fa-xl"></i> Hablar con el Propietario (62109656)
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Urbanización Libertad, Meseta de Achumani</strong> • La Paz, Bolivia</p>
+        <p>Venta Directa sin Intermediarios | WhatsApp: 62109656</p>
+        <p style="margin-top: 1.5rem; font-size: 0.8rem; color: #718096;">© 2026 Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/59162109656?text=Hola,%20me%20gustaría%20recibir%20más%20información%20sobre%20la%20residencia%20en%20Achumani." class="whatsapp-float" target="_blank" title="Escríbenos por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Carousel Script
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function moveSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("carousel-slide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            slides[slideIndex - 1].classList.add("active");
+            dots[slideIndex - 1].classList.add("active");
+        }
+
+        // Auto advance carousel every 5 seconds
+        setInterval(() => {
+            moveSlide(1);
+        }, 5000);
+    </script>
+</body>
+</html>
