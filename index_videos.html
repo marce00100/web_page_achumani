@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Casa en Meseta de Achumani — Zona Sur, La Paz</title>
 <meta name="description" content="Residencia de 212 m² construidos en Urbanización Libertad, Meseta de Achumani. Jardín, departamento independiente y venta directa.">
+<meta name="theme-color" content="#181F2C">
+
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<!-- <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"> -->
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-64.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -38,6 +46,7 @@
   p{margin:0;}
   a{text-decoration:none; color:inherit;}
   img{display:block; max-width:100%;}
+  button{font-family:inherit;}
   .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
   .eyebrow{
     font-family:'JetBrains Mono', monospace;
@@ -108,7 +117,7 @@
   }
   .hero-bg{
     position:absolute; inset:0;
-    background-image:url('img/a01.jpg');
+    background-image:url('img/a01_frontis.jpg');
     background-size:cover;
     background-position:center 65%;
     transform:scale(1.08);
@@ -167,6 +176,7 @@
     display:inline-flex; align-items:center; gap:11px;
     box-shadow:0 10px 30px rgba(232,169,74,0.28);
     transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    border:none; cursor:pointer;
   }
   .btn-primary svg{width:19px; height:19px; flex-shrink:0;}
   .btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 34px rgba(232,169,74,0.4); background:var(--sol-soft);}
@@ -180,6 +190,22 @@
     border-radius:100px;
   }
   .price-chip b{color:var(--sol-soft); font-weight:600;}
+
+  /* PARA BOTONES DE GALERIA Y VIDEO*/
+  .btn-outline {
+    color: var(--hueso-2);
+    font-weight: 500;
+    font-size: 14.5px;
+    padding: 14px 24px;
+    border-radius: 100px;
+    border: 1px solid rgba(237,230,216,0.35);
+    transition: background 0.25s ease, color 0.25s ease;
+  }
+  .btn-outline:hover {
+    background: var(--hueso-2);
+    color: var(--noche);
+  }
+
   .scroll-cue{
     position:absolute; right:32px; bottom:26px; z-index:2;
     color:rgba(237,230,216,0.75);
@@ -346,6 +372,14 @@
     max-width:640px;
   }
   .carousel-caption b{color:var(--sol-soft); font-weight:600; font-family:'JetBrains Mono', monospace; font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:8px;}
+  .carousel-counter{
+    position:absolute; top:20px; right:24px; z-index:3;
+    font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em;
+    color:var(--hueso-2); background:rgba(24,31,44,0.55);
+    -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+    border:1px solid rgba(237,230,216,0.28);
+    padding:6px 12px; border-radius:100px;
+  }
   .carousel-arrow{
     position:absolute; top:50%; transform:translateY(-50%);
     width:46px; height:46px; border-radius:50%;
@@ -363,7 +397,7 @@
   .carousel-arrow.prev{left:18px;}
   .carousel-arrow.next{right:18px;}
   .carousel-dots{
-    display:flex; justify-content:center; gap:10px; margin-top:22px;
+    display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-top:22px;
   }
   .carousel-dots button{
     width:9px; height:9px; border-radius:50%;
@@ -372,6 +406,92 @@
     transition:background .3s ease, width .3s ease;
   }
   .carousel-dots button.active{background:var(--piedra); width:26px; border-radius:6px;}
+  .carousel-thumbs{
+    display:grid; grid-template-columns:repeat(13, 1fr); gap:8px; margin-top:16px;
+  }
+  .carousel-thumbs button{
+    padding:0; border:2px solid transparent; border-radius:8px; overflow:hidden; cursor:pointer;
+    aspect-ratio:1/1; background:var(--noche); opacity:.55; transition:opacity .25s ease, border-color .25s ease;
+  }
+  .carousel-thumbs button img{width:100%; height:100%; object-fit:cover;}
+  .carousel-thumbs button.active{opacity:1; border-color:var(--sol);}
+  .carousel-thumbs button:hover{opacity:1;}
+
+  /* ---------- VIDEO TOURS ---------- */
+  .videos{background:var(--hueso-2); padding-top:0;}
+  .video-grid{display:grid; grid-template-columns:repeat(4, 1fr); gap:22px;}
+  .video-card{
+    position:relative; border-radius:16px; overflow:hidden; cursor:pointer;
+    aspect-ratio:3/4; background:var(--noche);
+    border:none; padding:0; width:100%; display:block;
+  }
+  .video-card img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease;}
+  .video-card:hover img{transform:scale(1.06);}
+  .video-card .vc-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(24,31,44,0.1) 0%, rgba(24,31,44,0.35) 55%, rgba(24,31,44,0.88) 100%);
+  }
+  .video-card .vc-play{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:58px; height:58px; border-radius:50%;
+    background:rgba(237,230,216,0.40);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px rgba(0,0,0,0.35);
+    transition:transform .3s ease, background .3s ease;
+  }
+  .video-card:hover .vc-play{transform:translate(-50%,-50%) scale(1.08); background:var(--sol);}
+  .video-card .vc-play svg{width:20px; height:20px; margin-left:3px; fill:var(--noche);}
+  .video-card .vc-label{
+    position:absolute; left:0; right:0; bottom:0; padding:18px; color:var(--hueso-2); text-align:left;
+  }
+  .video-card .vc-label b{
+    display:block; font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--sol-soft); margin-bottom:6px;
+  }
+  .video-card .vc-label span{font-size:14px; line-height:1.35; font-weight:500; display:block;}
+
+  /* video modal */
+  .video-modal{
+    position:fixed; inset:0; z-index:400; display:none;
+    align-items:center; justify-content:center;
+    padding:26px;
+  }
+  .video-modal.open{display:flex;}
+  .video-modal-backdrop{
+    position:absolute; inset:0; background:rgba(10,12,18,0.9);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+  }
+  .video-modal-inner{position:relative; z-index:1; max-width:96vw; max-height:96vh;}
+  .video-modal-close{
+    position:absolute; top:-46px; right:0; z-index:2;
+    width:36px; height:36px; border-radius:50%;
+    background:rgba(237,230,216,0.12); border:1px solid rgba(237,230,216,0.3);
+    color:var(--hueso-2); font-size:20px; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:background .25s ease;
+  }
+  .video-modal-close:hover{background:var(--sol); color:var(--noche); border-color:var(--sol);}
+  .video-modal-frame{
+    --ar:1.7778;
+    position:relative;
+    width:min(92vw, calc(88vh * var(--ar)));
+    aspect-ratio:var(--ar);
+    max-height:88vh;
+    border-radius:14px;
+    overflow:hidden;
+    background:#000;
+    box-shadow:0 30px 70px rgba(0,0,0,0.5);
+  }
+  .video-modal-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
+  .video-modal-loading{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    color:rgba(237,230,216,0.7); font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:0.08em;
+    text-transform:uppercase; gap:10px;
+  }
+  .video-modal-loading .dot{width:6px; height:6px; border-radius:50%; background:var(--sol-soft); animation:blink 1.1s ease-in-out infinite;}
+  .video-modal-loading .dot:nth-child(2){animation-delay:.15s;}
+  .video-modal-loading .dot:nth-child(3){animation-delay:.3s;}
+  @keyframes blink{ 0%,100%{opacity:.25;} 50%{opacity:1;} }
 
   /* ---------- JARDIN ---------- */
   .jardin{background:var(--hueso-2);}
@@ -460,6 +580,8 @@
     .jardin-grid{grid-template-columns:1fr;}
     .jardin-visual{aspect-ratio:16/9;}
     .ficha-grid{grid-template-columns:1fr;}
+    .video-grid{grid-template-columns:repeat(2, 1fr);}
+    .carousel-thumbs{grid-template-columns:repeat(7, 1fr);}
     section{padding:76px 0;}
     .wrap{padding:0 22px;}
     .hero-content{padding-top:130px;}
@@ -469,6 +591,8 @@
     .hero-row{flex-direction:column; align-items:flex-start;}
     .carousel{aspect-ratio:4/5;}
     .carousel-caption{padding:20px 20px;}
+    .carousel-thumbs{grid-template-columns:repeat(5, 1fr);}
+    .video-grid{grid-template-columns:repeat(2, 1fr); gap:14px;}
   }
 </style>
 </head>
@@ -509,6 +633,11 @@
             Coordinar visita por WhatsApp
           </a>
           <span class="price-chip">US$ <b>165.000</b> · venta directa</span>
+          <!-- NUEVOS BOTONES DE NAVEGACIÓN -->
+          <div>
+            <a class="btn-outline" href="#seccion-galeria">Ver Galería</a>
+            <a class="btn-outline" href="#seccion-videos">Recorrido Virtual</a>
+          </div>
         </div>
       </div>
     </div>
@@ -591,14 +720,14 @@
           <p>Con sala, cocina, baño y dos dormitorios propios, este departamento independiente recibe sol directo toda la tarde. Puede alojar a un familiar con total privacidad, convertirse en oficina o estudio, o generar un ingreso mensual extra por alquiler. Es, literalmente, una segunda posibilidad dentro de la misma propiedad — y pocas propiedades en la zona ofrecen esto.</p>
         </div>
         <div class="plus-visual">
-          <img src="img/b01.jpg" alt="Acceso independiente al departamento y jardín lateral" loading="lazy">
+          <img src="img/d01_minidepto.jpg" alt="Entrada independiente del mini departamento" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
   <!-- GALERIA -->
-  <section class="galeria">
+  <section class="galeria" id="seccion-galeria">
     <div class="wrap">
       <div class="section-head reveal">
         <div class="eyebrow">Un recorrido por la casa</div>
@@ -606,28 +735,8 @@
       </div>
 
       <div class="carousel reveal" id="carousel">
-        <div class="carousel-track" id="carouselTrack">
-          <div class="carousel-slide">
-            <img src="img/a01.jpg" alt="Fachada principal de la casa" loading="lazy">
-            <div class="carousel-caption"><b>Fachada principal</b>Dos plantas, balcón privado y jardín delantero con agaves.</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="img/interior.jpg" alt="Sala principal con chimenea de ladrillo" loading="lazy">
-            <div class="carousel-caption"><b>Sala principal</b>Amplia, luminosa y con chimenea de ladrillo lista para las noches frías.</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="img/b01.jpg" alt="Acceso lateral hacia el jardín" loading="lazy">
-            <div class="carousel-caption"><b>Acceso lateral</b>El camino que conecta el jardín con el departamento independiente.</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="img/b06.jpg" alt="Sendero de rosas en el jardín" loading="lazy">
-            <div class="carousel-caption"><b>Jardín en flor</b>Rosales que acompañan el camino hasta la puerta del fondo.</div>
-          </div>
-          <div class="carousel-slide">
-            <img src="img/a06.jpg" alt="Calle y serranías de Achumani" loading="lazy">
-            <div class="carousel-caption"><b>El entorno</b>La calle y, al fondo, las serranías que le dan a Achumani su carácter.</div>
-          </div>
-        </div>
+        <div class="carousel-track" id="carouselTrack"></div>
+        <div class="carousel-counter" id="carouselCounter">01 / 13</div>
         <div class="carousel-arrow prev" id="prevBtn" role="button" aria-label="Anterior">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
         </div>
@@ -636,6 +745,19 @@
         </div>
       </div>
       <div class="carousel-dots" id="carouselDots"></div>
+      <div class="carousel-thumbs" id="carouselThumbs"></div>
+    </div>
+  </section>
+
+  <!-- VIDEO TOURS -->
+  <section class="videos" id="seccion-videos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div class="eyebrow">Video recorridos</div>
+        <h2>Camina por la casa antes de visitarla en persona.</h2>
+        <p>Cuatro recorridos cortos grabados ambiente por ambiente. Toca cualquiera para verlo con sonido.</p>
+      </div>
+      <div class="video-grid reveal-stagger reveal" id="videoGrid"></div>
     </div>
   </section>
 
@@ -644,16 +766,16 @@
     <div class="wrap">
       <div class="jardin-grid reveal">
         <div class="jardin-visual">
-          <img src="img/b06.jpg" alt="Jardín con rosas y árboles frutales" loading="lazy">
+          <img src="img/b01_patio.jpg" alt="Jardín con rosas y árboles frutales" loading="lazy">
         </div>
         <div class="jardin-text">
           <div class="eyebrow">Para desconectar sin salir de casa</div>
           <h2>Un jardín que cambia con las estaciones.</h2>
           <p>Césped cuidado, rosales en flor y árboles frutales rodean la propiedad. Un espacio pensado para las tardes tranquilas, el café del domingo o simplemente para que los más pequeños tengan dónde correr.</p>
-          <p>El garaje privado y el entorno cercado completan la sensación de un barrio donde los vecinos se conocen y las calles se sienten seguras.</p>
+          <p>El garaje techado y el entorno cercado completan la sensación de un barrio donde los vecinos se conocen y las calles se sienten seguras.</p>
           <div class="jardin-tags">
             <span>Árboles frutales</span>
-            <span>Garaje privado</span>
+            <span>Garaje techado</span>
             <span>Entorno cercado</span>
             <span>Rosales todo el año</span>
           </div>
@@ -713,8 +835,19 @@
     <svg viewBox="0 0 24 24" fill="#181F2C"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-1-.3-.1-.5-.1-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10 9 9.4 7.6 9.2 7c-.2-.5-.4-.5-.6-.5h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.9.5 3.7 1.5 5.2L2 22l4.9-1.3c1.4.8 3.1 1.2 4.9 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3C4.1 15 3.6 13.5 3.6 12 3.6 7.4 7.4 3.6 12 3.6s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
   </a>
 
+  <!-- VIDEO MODAL -->
+  <div class="video-modal" id="videoModal">
+    <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+    <div class="video-modal-inner">
+      <button class="video-modal-close" id="videoModalClose" aria-label="Cerrar video">✕</button>
+      <div class="video-modal-frame" id="videoModalFrame">
+        <div class="video-modal-loading" id="videoModalLoading"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+      </div>
+    </div>
+  </div>
+
 <script>
-  // WhatsApp link setup
+  /* ============ WhatsApp ============ */
   const phone = "59162109656";
   const msg = encodeURIComponent("Hola, vi la publicación de la casa en Meseta de Achumani (Urb. Libertad) y me gustaría coordinar una visita.");
   const waLink = `https://wa.me/${phone}?text=${msg}`;
@@ -723,13 +856,13 @@
     if(el) el.href = waLink;
   });
 
-  // Nav scroll state
+  /* ============ Nav scroll state ============ */
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', ()=>{
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
 
-  // Reveal on scroll
+  /* ============ Reveal on scroll ============ */
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(entry=>{
@@ -741,27 +874,70 @@
   }, {threshold:0.15});
   revealEls.forEach(el=>io.observe(el));
 
-  // Carousel
+  /* ============ Galería de fotos (13 imágenes) ============ */
+  const photos = [
+    { src:"img/a01_frontis.jpg", tag:"Fachada",              caption:"Fachada principal: dos plantas, balcón privado y jardín delantero con agaves." },
+    { src:"img/a06_entorno_residencial.jpg", tag:"El entorno",            caption:"La calle y, al fondo, las serranías que le dan a Achumani su carácter." },
+    { src:"img/b01_patio.jpg", tag:"Patio y jardín",        caption:"Patio trasero con césped y rosales, con acceso directo a la parte posterior de la casa." },
+    { src:"img/b03_garaje.jpg", tag:"Garaje techado",        caption:"Garaje cubierto con vista abierta a las serranías: espacio techado y seguro para el vehículo." },
+    { src:"img/b06_jardin _entrada.jpg", tag:"Sendero de entrada",    caption:"El sendero de rosas que conecta el jardín con la puerta del departamento independiente." },
+    { src:"img/c02_interior.jpg", tag:"Sala principal",        caption:"Sala amplia con chimenea de ladrillo, lista para las noches frías en familia." },
+    { src:"img/c03_interior.jpg", tag:"Sala — otro ángulo",    caption:"Otra vista de la sala: luz natural entrando por los ventanales hacia el jardín." },
+    { src:"img/c04_interior.jpg", tag:"Acceso interior",       caption:"La escalera de madera que conecta con la puerta principal de vitral." },
+    { src:"img/c05_habitacion02_piso1.jpg", tag:"Habitación · piso 1",   caption:"Una de las habitaciones de planta alta, con piso de madera y vista a la ciudad." },
+    { src:"img/c6_habitacion01_piso1.jpg", tag:"Habitación · piso 1",   caption:"La segunda habitación de planta alta, luminosa y con ventanas en esquina." },
+    { src:"img/c07_baño.jpg", tag:"Baño · planta alta",    caption:"Baño completo de planta alta, con tina, lavamanos e inodoro." },
+    { src:"img/d01_minidepto.jpg", tag:"Mini departamento",     caption:"La entrada independiente del mini departamento, rodeada de rosales." },
+    { src:"img/d06_cocina.jpg", tag:"Cocina · mini depto",   caption:"La cocina del departamento independiente, funcional y con luz natural propia." },
+  ];
+
   const track = document.getElementById('carouselTrack');
-  const slides = Array.from(track.children);
   const dotsWrap = document.getElementById('carouselDots');
+  const thumbsWrap = document.getElementById('carouselThumbs');
+  const counterEl = document.getElementById('carouselCounter');
+
+  photos.forEach((p)=>{
+    const slide = document.createElement('div');
+    slide.className = 'carousel-slide';
+    slide.innerHTML = `
+      <img src="${p.src}" alt="${p.caption}" loading="lazy">
+      <div class="carousel-caption"><b>${p.tag}</b>${p.caption}</div>
+    `;
+    track.appendChild(slide);
+
+    const dot = document.createElement('button');
+    dot.setAttribute('aria-label', p.tag);
+    dotsWrap.appendChild(dot);
+
+    const thumb = document.createElement('button');
+    thumb.innerHTML = `<img src="${p.src}" alt="${p.tag}" loading="lazy">`;
+    thumbsWrap.appendChild(thumb);
+  });
+
+  const dots = Array.from(dotsWrap.children);
+  const thumbs = Array.from(thumbsWrap.children);
   let index = 0;
   let autoplayTimer;
 
-  slides.forEach((_, i)=>{
-    const dot = document.createElement('button');
-    if(i===0) dot.classList.add('active');
-    dot.addEventListener('click', ()=>goTo(i));
-    dotsWrap.appendChild(dot);
-  });
-  const dots = Array.from(dotsWrap.children);
-
+  function pad(n){ return String(n).padStart(2,'0'); }
   function update(){
+    // 1. Mueve el carrusel visualmente deslizando las imágenes
     track.style.transform = `translateX(-${index*100}%)`;
+    
+    // 2. Actualiza los puntos (dots) inferiores para mostrar en cuál foto estamos
     dots.forEach((d,i)=>d.classList.toggle('active', i===index));
+    
+    // 3. Resalta la miniatura (thumbnail) correspondiente dándole un borde
+    thumbs.forEach((t,i)=>t.classList.toggle('active', i===index));
+    
+    // 4. Actualiza el contador de texto (ej. 02 / 13)
+    counterEl.textContent = `${pad(index+1)} / ${pad(photos.length)}`;
+    
+    /* ELIMINADO: Se borró la función "scrollIntoView" porque obligaba a la pantalla 
+       a saltar hacia la galería cada 5 segundos, arruinando la experiencia del usuario. */
   }
   function goTo(i){
-    index = (i + slides.length) % slides.length;
+    index = (i + photos.length) % photos.length;
     update();
     restartAutoplay();
   }
@@ -772,12 +948,13 @@
     autoplayTimer = setInterval(next, 5500);
   }
 
+  dots.forEach((d,i)=>d.addEventListener('click', ()=>goTo(i)));
+  thumbs.forEach((t,i)=>t.addEventListener('click', ()=>goTo(i)));
   document.getElementById('nextBtn').addEventListener('click', next);
   document.getElementById('prevBtn').addEventListener('click', prev);
   document.getElementById('carousel').addEventListener('mouseenter', ()=>clearInterval(autoplayTimer));
   document.getElementById('carousel').addEventListener('mouseleave', restartAutoplay);
 
-  // swipe support
   let touchStartX = 0;
   track.addEventListener('touchstart', e=>{ touchStartX = e.touches[0].clientX; }, {passive:true});
   track.addEventListener('touchend', e=>{
@@ -787,6 +964,107 @@
 
   update();
   restartAutoplay();
+
+  /* ============ Video recorridos ============ */
+  const videos = [
+    { id:"Pf-TIv7gQok", tag:"Recorrido 1", title:"Calle, sala principal, cocina y patio-jardín" },
+    { id:"MOhCBisPkss", tag:"Recorrido 2", title:"Jardín, cocina y sala con chimenea" },
+    { id:"qIrhF_pfG6w", tag:"Recorrido 3", title:"Habitaciones, balcón y baño — planta alta" },
+    { id:"UhZKEd928w4", tag:"Recorrido 4", title:"Del jardín al mini departamento completo" },
+  ];
+
+  const videoGrid = document.getElementById('videoGrid');
+  videos.forEach(v=>{
+    const card = document.createElement('button');
+    card.className = 'video-card';
+    card.setAttribute('type','button');
+    card.setAttribute('aria-label', `Reproducir video: ${v.title}`);
+    card.innerHTML = `
+      <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy">
+      <div class="vc-overlay"></div>
+      <div class="vc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      <div class="vc-label"><b>${v.tag}</b><span>${v.title}</span></div>
+    `;
+    card.addEventListener('click', ()=>openVideo(v.id));
+    videoGrid.appendChild(card);
+  });
+
+  /* ---- YouTube IFrame API + modal ---- */
+  const videoModal = document.getElementById('videoModal');
+  const videoModalFrame = document.getElementById('videoModalFrame');
+  const videoModalLoading = document.getElementById('videoModalLoading');
+  const videoModalClose = document.getElementById('videoModalClose');
+  const videoModalBackdrop = document.getElementById('videoModalBackdrop');
+
+  let ytApiReady = false;
+  let pendingVideoId = null;
+  let ytPlayer = null;
+  let playerNode = null;
+
+  const ytScript = document.createElement('script');
+  ytScript.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(ytScript);
+  window.onYouTubeIframeAPIReady = function(){
+    ytApiReady = true;
+    if(pendingVideoId) createPlayer(pendingVideoId);
+  };
+
+  function detectAspectRatio(id, cb){
+    const img = new Image();
+    img.onload = ()=>{
+      if(img.naturalWidth && img.naturalHeight){
+        cb(img.naturalWidth / img.naturalHeight);
+      } else { cb(16/9); }
+    };
+    img.onerror = ()=>cb(16/9);
+    img.src = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+  }
+
+  function createPlayer(id){
+    if(ytPlayer){ try{ ytPlayer.destroy(); }catch(e){} ytPlayer = null; }
+    playerNode = document.createElement('div');
+    videoModalFrame.appendChild(playerNode);
+    ytPlayer = new YT.Player(playerNode, {
+      width:'100%', height:'100%', videoId:id,
+      playerVars:{ autoplay:1, rel:0, modestbranding:1, playsinline:1, controls:1 },
+      events:{
+        onReady:(e)=>{
+          e.target.setVolume(60);   // volumen moderado (60%) al abrir el video
+          e.target.playVideo();
+          videoModalLoading.style.display = 'none';
+        }
+      }
+    });
+  }
+
+  function openVideo(id){
+    videoModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    videoModalLoading.style.display = 'flex';
+    videoModalFrame.style.setProperty('--ar', 16/9);
+
+    detectAspectRatio(id, (ar)=>{
+      videoModalFrame.style.setProperty('--ar', ar);
+    });
+
+    if(ytApiReady){ createPlayer(id); }
+    else { pendingVideoId = id; }
+  }
+
+  function closeVideo(){
+    videoModal.classList.remove('open');
+    document.body.style.overflow = '';
+    if(ytPlayer){ try{ ytPlayer.destroy(); }catch(e){} ytPlayer = null; }
+    if(playerNode){ playerNode.remove(); playerNode = null; }
+    videoModalLoading.style.display = 'flex';
+    pendingVideoId = null;
+  }
+
+  videoModalClose.addEventListener('click', closeVideo);
+  videoModalBackdrop.addEventListener('click', closeVideo);
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && videoModal.classList.contains('open')) closeVideo();
+  });
 </script>
 </body>
 </html>
