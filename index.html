@@ -1070,6 +1070,36 @@
     });
   }
 
+  // function openVideo(id){
+  //   videoModal.classList.add('open');
+  //   document.body.style.overflow = 'hidden';
+  //   videoModalLoading.style.display = 'flex';
+  //   videoModalFrame.style.setProperty('--ar', 16/9);
+
+  //   detectAspectRatio(id, (ar)=>{
+  //     videoModalFrame.style.setProperty('--ar', ar);
+  //   });
+
+  //   if(ytApiReady){ createPlayer(id); }
+  //   else { pendingVideoId = id; }
+  // }
+
+  // function closeVideo(){
+  //   videoModal.classList.remove('open');
+  //   document.body.style.overflow = '';
+  //   if(ytPlayer){ try{ ytPlayer.destroy(); }catch(e){} ytPlayer = null; }
+  //   if(playerNode){ playerNode.remove(); playerNode = null; }
+  //   videoModalLoading.style.display = 'flex';
+  //   pendingVideoId = null;
+  // }
+
+  // videoModalClose.addEventListener('click', closeVideo);
+  // videoModalBackdrop.addEventListener('click', closeVideo);
+  // document.addEventListener('keydown', (e) => {
+  //   if (e.key === 'Escape' && videoModal.classList.contains('open')) closeVideo();
+  // });
+  
+  // Lógica de apertura con historial virtual
   function openVideo(id){
     videoModal.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -1082,9 +1112,13 @@
 
     if(ytApiReady){ createPlayer(id); }
     else { pendingVideoId = id; }
+
+    // ESTRATEGIA UX: Crear un estado en el historial del navegador
+    window.history.pushState({ modalAbierto: true }, "", "#recorrido-virtual");
   }
 
-  function closeVideo(){
+  // Lógica interna para destruir el video
+  function ejecutarCierreVideo(){
     videoModal.classList.remove('open');
     document.body.style.overflow = '';
     if(ytPlayer){ try{ ytPlayer.destroy(); }catch(e){} ytPlayer = null; }
@@ -1093,11 +1127,30 @@
     pendingVideoId = null;
   }
 
+  // Cierre manual (por botón X o clic fuera)
+  function closeVideo(){
+    ejecutarCierreVideo();
+    // Limpiamos el historial para no afectar la navegación normal
+    if (window.history.state && window.history.state.modalAbierto) {
+      window.history.back();
+    }
+  }
+
+  // EL TRUCO ESTRELLA: Detectar cuando presionan el botón "Atrás" del móvil/navegador
+  window.addEventListener('popstate', function(event) {
+    if (videoModal.classList.contains('open')) {
+      ejecutarCierreVideo(); // Cierra el modal sin salir de la landing page
+    }
+  });
+
   videoModalClose.addEventListener('click', closeVideo);
   videoModalBackdrop.addEventListener('click', closeVideo);
   document.addEventListener('keydown', (e)=>{
     if(e.key === 'Escape' && videoModal.classList.contains('open')) closeVideo();
   });
+
+
+
 </script>
 </body>
 </html>
