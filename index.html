@@ -747,9 +747,10 @@
     <div class="wrap">
       <div class="plus-inner reveal">
         <div class="plus-text">
+          <h3>Departamento independiente.</h3>
           <span class="plus-badge">Inversión Inteligente</span>
-          <h3>Rentabilidad pasiva: un activo que se paga solo.</h3>
-          <p style="margin-bottom: 20px;">Este mini-departamento independiente recibe sol directo toda la tarde, además no solo ofrece privacidad absoluta, sino que representa una ventaja financiera estratégica. Con acceso propio, sala, cocina y baño, es ideal para generar un flujo de ingresos mensual constante por alquiler tradicional o Airbnb.</p>
+          <h2>Rentabilidad pasiva: un activo que se paga solo.</h2>
+          <p style="margin-bottom: 20px;">Este mini-departamento independiente recibe sol directo toda la tarde, además no solo ofrece privacidad absoluta, sino que representa una ventaja financiera estratégica. Con acceso propio, sala, cocina, baño y dos habitaciones, es ideal para generar un flujo de ingresos mensual constante por alquiler tradicional o Airbnb.</p>
           <p>Si prefieres un uso familiar, es el refugio perfecto para independizar a un hijo, recibir huéspedes o montar un estudio profesional aislado del ruido del hogar. Es, literalmente, una segunda posibilidad dentro de la misma propiedad — y pocas propiedades en la zona ofrecen esto.</p>
         </div>
         <div class="plus-visual">
@@ -909,19 +910,19 @@
 
   /* ============ Galería de fotos (13 imágenes) ============ */
   const photos = [
-    { src:"img/a01_frontis.jpg", tag:"Fachada",              caption:"Fachada principal: dos plantas, balcón privado y jardín delantero con agaves." },
-    { src:"img/a06_entorno_residencial.jpg", tag:"El entorno",            caption:"La calle y, al fondo, las serranías que le dan a Achumani su carácter." },
-    { src:"img/b01_patio.jpg", tag:"Patio y jardín",        caption:"Patio trasero con césped y rosales, con acceso directo a la parte posterior de la casa." },
-    { src:"img/b03_garaje.jpg", tag:"Garaje techado",        caption:"Garaje cubierto con vista abierta a las serranías: espacio techado y seguro para el vehículo." },
-    { src:"img/b06_jardin _entrada.jpg", tag:"Sendero de entrada",    caption:"El sendero de rosas que conecta el jardín con la puerta del departamento independiente." },
-    { src:"img/c02_interior.jpg", tag:"Sala principal",        caption:"Sala amplia con chimenea de ladrillo, lista para las noches frías en familia." },
-    { src:"img/c03_interior.jpg", tag:"Sala — otro ángulo",    caption:"Otra vista de la sala: luz natural entrando por los ventanales hacia el jardín." },
-    { src:"img/c04_interior.jpg", tag:"Acceso interior",       caption:"La escalera de madera que conecta con la puerta principal de vitral." },
-    { src:"img/c05_habitacion02_piso1.jpg", tag:"Habitación · piso 1",   caption:"Una de las habitaciones de planta alta, con piso de madera y vista a la ciudad." },
-    { src:"img/c6_habitacion01_piso1.jpg", tag:"Habitación · piso 1",   caption:"La segunda habitación de planta alta, luminosa y con ventanas en esquina." },
-    { src:"img/c07_baño.jpg", tag:"Baño · planta alta",    caption:"Baño completo de planta alta, con tina, lavamanos e inodoro." },
-    { src:"img/d01_minidepto.jpg", tag:"Mini departamento",     caption:"La entrada independiente del mini departamento, rodeada de rosales." },
-    { src:"img/d06_cocina.jpg", tag:"Cocina · mini depto",   caption:"La cocina del departamento independiente, funcional y con luz natural propia." },
+    { src:"img/a01_frontis.jpg"            , tag:"Fachada",              caption:"Fachada principal: dos plantas, balcón privado y jardín delantero con agaves." },
+    // { src:"img/a06_entorno_residencial.jpg", tag:"El entorno",            caption:"La calle y, al fondo, las serranías que le dan a Achumani su carácter." },
+    { src:"img/c02_interior.jpg"           , tag:"Sala principal",        caption:"Sala amplia con chimenea de ladrillo, lista para las noches frías en familia." },
+    { src:"img/c03_interior.jpg"           , tag:"Sala — otro ángulo",    caption:"Otra vista de la sala: luz natural entrando por los ventanales hacia el jardín." },
+    { src:"img/b06_jardin _entrada.jpg"    , tag:"Sendero de entrada",    caption:"El sendero de rosas que conecta el jardín con la puerta del departamento independiente." },
+    { src:"img/b01_patio.jpg"              , tag:"Patio y jardín",        caption:"Patio trasero con césped y rosales, con acceso directo a la parte posterior de la casa." },
+    { src:"img/b03_garaje.jpg"             , tag:"Garaje techado",        caption:"Garaje cubierto con vista abierta a las serranías: espacio techado y seguro para el vehículo." },
+    { src:"img/c05_habitacion02_piso1.jpg" , tag:"Habitación · piso 1",   caption:"Una de las habitaciones de planta alta, con piso de madera y vista a la ciudad." },
+    { src:"img/c6_habitacion01_piso1.jpg"  , tag:"Habitación · piso 1",   caption:"La segunda habitación de planta alta, luminosa y con ventanas en esquina." },
+    { src:"img/c07_baño.jpg"               , tag:"Baño · planta alta",    caption:"Baño completo de planta alta, con tina, lavamanos e inodoro." },
+    { src:"img/c04_interior.jpg"           , tag:"Acceso interior",       caption:"La escalera de madera que conecta con la puerta principal de vitral." },
+    { src:"img/d01_minidepto.jpg"          , tag:"Mini departamento",     caption:"La entrada independiente del mini departamento, rodeada de rosales." },
+    { src:"img/d06_cocina.jpg"             , tag:"Cocina · mini depto",   caption:"La cocina del departamento independiente, funcional y con luz natural propia." },
   ];
 
   const track = document.getElementById('carouselTrack');
@@ -964,7 +965,7 @@
     thumbs.forEach((t,i)=>t.classList.toggle('active', i===index));
     
     // 4. Actualiza el contador de texto (ej. 02 / 13)
-    counterEl.textContent = `${pad(index+1)} / ${pad(photos.length)}`;
+    counterEl.textContent = `${index+1} / ${photos.length}`;
     
     /* ELIMINADO: Se borró la función "scrollIntoView" porque obligaba a la pantalla 
        a saltar hacia la galería cada 5 segundos, arruinando la experiencia del usuario. */
